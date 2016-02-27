@@ -1,0 +1,22 @@
+include ../menu/menu
+include ../search/search
+
+//- Block
+mixin header(m)
+
+	//- Mutation
+	- var p = m === undefined ? '' : '--' + m;
+
+
+
+	//- Elements
+	mixin logo(em)
+		//- Mutation
+		- var ep = em === undefined ? '' : '--' + em;
+
+		img(class='header#{p}__logo#{ep}')
+
+
+
+	//- Body
+	div(class='header#{p}')

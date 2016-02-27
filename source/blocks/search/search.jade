@@ -1,0 +1,25 @@
+//- Block
+mixin search(m)
+
+	//- Mutation
+	- var p = m === undefined ? '' : '--' + m;
+
+
+
+	//- Elements
+	mixin field(em)
+		//- Mutation
+		- var ep = em === undefined ? '' : '--' + em;
+
+		input(type="text" class="search#{p}__field#{ep}")
+
+	mixin button(em)
+		//- Mutation
+		- var ep = em === undefined ? '' : '--' + em;
+
+		button(type="button" class="search#{p}__button#{ep}")
+
+
+
+	//- Body
+	div(class="search#{p}")

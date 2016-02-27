@@ -1,0 +1,41 @@
+reset-inline =
+	font-size 0px
+	line-height 0px
+	letter-spacing -1
+	
+restore-inline =
+	font-size 16px
+	line-height 1
+	letter-spacing normal
+	
+
+transit= 
+	transition all .3s ease
+	
+
+adapt(xs='',sm='',md='',lg='')
+	@media (max-width: tb-xs)
+		{xs}
+	
+	@media (min-width: tb-sm)
+		{sm}
+		
+	@media (min-width: tb-md)
+		{md}
+		
+	@media (min-width: tb-lg)
+		{lg}
+		
+
+
+below(value)
+	@media (max-width: value)
+		{block}
+	
+above(value)
+	@media (min-width: value)
+		{block}
+		
+between(min=0px, max=2560px)
+	@media (min-width: min) and (max-width: max)
+		{block}
