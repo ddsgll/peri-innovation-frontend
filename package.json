@@ -9,9 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp dev",
     "build": "gulp build",
-    "start": "gulp",
-    "atom": "moleculate n a",
-    "molecule": "moleculate n m"
+    "start": "gulp"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.5.0",
@@ -25,6 +23,8 @@
     "gulp-cssnano": "^2.1.1",
     "gulp-group-css-media-queries": "^1.1.0",
     "gulp-html-prettify": "0.0.1",
+    "gulp-iconfont": "^6.0.0",
+    "gulp-iconfont-css": "^2.0.0",
     "gulp-image": "^1.3.1",
     "gulp-jade": "^1.1.0",
     "gulp-notify": "^2.2.0",

@@ -13,19 +13,32 @@ transit=
 	transition all .3s ease
 	
 
-adapt(xs='',sm='',md='',lg='')
-	@media (max-width: tb-xs)
-		{xs}
+// adapt(xs='',sm='',md='',lg='')
+// 	@media (max-width: tb-xs)
+// 		{xs}
 	
-	@media (min-width: tb-sm)
-		{sm}
+// 	@media (min-width: tb-sm)
+// 		{sm}
 		
-	@media (min-width: tb-md)
-		{md}
+// 	@media (min-width: tb-md)
+// 		{md}
 		
-	@media (min-width: tb-lg)
-		{lg}
-		
+// 	@media (min-width: tb-lg)
+// 		{lg}
+
+
+xs()
+	@media (max-width: tb-xs)
+		{block}
+sm()
+	@media (max-width: tb-sm)
+		{block}
+md()
+	@media (max-width: tb-md)
+		{block}	
+lg()
+	@media (max-width: tb-lg)
+		{block}		
 
 
 below(value)

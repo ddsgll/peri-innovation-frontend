@@ -39,7 +39,7 @@ gulp.task('makelibs', () => {
 
 gulp.task('static:transfer', () => {
 
-	gulp.src('static/fonts/*').pipe( gulp.dest('dev/fonts/') );
+	gulp.src('static/fonts/**/*').pipe( gulp.dest('dev/fonts/') );
 	gulp.src('static/img/**/*')
 		.pipe( image({
 			pngquant: true,
