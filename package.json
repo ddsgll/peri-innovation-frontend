@@ -9,7 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp dev",
     "build": "gulp build",
-    "start": "gulp"
+    "start": "gulp",
+    "moleculate": "npm i -g moleculate",
+    "block": "block.js n m",
+    "atom": "block.js n a",
+    "path": "block.js p"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.5.0",

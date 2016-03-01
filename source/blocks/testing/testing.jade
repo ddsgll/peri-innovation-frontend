@@ -1,0 +1,23 @@
+//- Block
+mixin testing(m)
+
+	//- Mutation
+	- var p = m === undefined ? '' : '--' + m;
+
+	//- Element 'lable'
+	mixin lable(em)
+		//- Mutation
+		- var ep = em === undefined ? '' : '--' + em;
+
+		div(class='testing#{p}__lable#{ep}')
+
+	//- Element 'link'
+	mixin link(em)
+		//- Mutation
+		- var ep = em === undefined ? '' : '--' + em;
+
+		div(class='testing#{p}__link#{ep}')
+
+
+	//- Body
+	div(class='testing#{p}')

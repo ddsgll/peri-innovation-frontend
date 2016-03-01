@@ -1,5 +1,61 @@
 {
-    "atoms": [],
-    "molecules": [],
+    "atoms": [
+        {
+            "name": "text",
+            "muts": [
+                ""
+            ],
+            "tag": "input",
+            "attr": [
+                "type:text"
+            ]
+        },
+        {
+            "name": "password",
+            "muts": [
+                "disabled"
+            ],
+            "tag": "input",
+            "attr": [
+                "type:password",
+                "required"
+            ]
+        }
+    ],
+    "molecules": [
+        {
+            "name": "search",
+            "mutations": [
+                "hidden",
+                "small"
+            ],
+            "atoms": [
+                "input:input",
+                "link:a",
+                "button:input"
+            ]
+        },
+        {
+            "name": "testing",
+            "mutations": [
+                ""
+            ],
+            "atoms": [
+                "lable",
+                "link"
+            ]
+        },
+        {
+            "name": "sfsdf",
+            "mutations": [
+                ""
+            ],
+            "atoms": [
+                "text",
+                "password",
+                "label"
+            ]
+        }
+    ],
     "dir": "source/blocks"
 }
