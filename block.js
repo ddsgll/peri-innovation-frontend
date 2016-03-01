@@ -26,6 +26,7 @@ const rl = readline.createInterface({
 
 // Constants
 const MAINFILE = path.join(process.cwd() + '/moleculate.json');
+const commands = ["new", "n", "--help", "-h", "path", "p", "run", "r"];
 
 
 // Variables
@@ -40,109 +41,82 @@ var blockPath = 'blocks/';
 
 //» CLASSES 
 //----------------------------------------
-// Molecule class
-class Molecule {
 
-	constructor(name, muts, atoms) {
-		this.name      = name;
-		this.mutations = muts  ? muts  : [];
-		this.atoms     = atoms ? atoms : [];
-	}
+// Markup generator class
+class Generator {
 
-	static create() {
-		let name, muts, atoms;
 
-		cl(`Creating new molecule. "Ctrl+c" to exit`.gray);
 
-		rl.question(`Name » `.green, molName => {
-			name = molName;
+	// Generating jade code
+	//----------------------------------------
+	static jade(block) {
 
-			rl.question(`Mutates » `.green, molMutate => {
-				muts = molMutate.split(' ');
-
-				rl.question(`Atoms » \n`.green + `Atoms: ${getAtomsList(MAINFILE)}\n`.gray, molAtoms => {
-					atoms = molAtoms.split(' ');
-					let notExisted = [];
-
-					for (let atom of atoms) {
-
-						if (isNewAtom(atom)) {
-							notExisted.push(atom);
-						}
-					}
-
-					var molecule = new Molecule(name, muts, atoms);
-					
-					if (notExisted.length) {					
-						cl(`Some atoms were not found: `.red + `${notExisted}`.yellow)
-						cl(`Don't forget to create them`.red);
-					}
-
-					Molecule.save(molecule);
-
-				});
-			});
-		});
-
-	}
-
-	static save(mol) {
 		let
-			data        = jsonfile.readFileSync(MAINFILE),
-			molecules   = getMoleculesList(MAINFILE),
-			molNotExist = isNewMolecule(mol.name);
+			mStart = `
+			//- Block
+			mixin ${block.name}(m)
+			
+				//- Mutation
+				- var p = m === undefined ? '' : '--' + m;
+			`,
 
-		if (molNotExist) {
-			data.molecules.push(mol);
+			mEnd = `
+				//- Body
+				div(class='${block.name}#{p}')
+			`,
 
-			jsonfile.writeFileSync(MAINFILE, data, {spaces: 4});
+			mElements = '';
 
-			Molecule.initBlock(mol.name);
-		}
-
-		else
-			cl(`Molecule already exists: `.red + `${mol.name}`.yellow);
-	}
-
-	static initBlock(name) {
-		buildBlocks();
-		rl.close();
-	}
+		let thereAreAtoms = block.atoms.length > 0 && block.atoms[0] !== "";
 
 
-	static generateJade(el) {
+		// Define atoms
+		if (thereAreAtoms) {
 
-		let atomsList = getAtomsList(MAINFILE);
+			block.atoms.forEach( atel => {
 
-		let mStart = `//- Block\nmixin ${el.name}(m)\n\n\t//- Mutation\n\t- var p = m === undefined ? '' : '--' + m;\n\n`;
+				let elemString = '';
 
-		let mElements = '';
 
-		if (el.atoms.length > 0 && el.atoms[0] !== "") {
+				// Define default atom
+				if (isNewAtom(atel))
+				{
+					elemString = `
+					//- Element '${atel}'
+					mixin ${atel}(em)
+						- var ep = em === undefined ? '' : '--' + em;
+					
+						div(class='${block.name}#{p}__${atel}#{ep}')
 
-			el.atoms.forEach( atel => {
-				let elemString
-
-				if (atomsList.indexOf(atel) === -1) {
-					elemString = `\t//- Element '${atel}'\n\tmixin ${atel}(em)\n\t\t//- Mutation\n\t\t- var ep = em === undefined ? '' : '--' + em;\n\n\t\tdiv(class='${el.name}#{p}__${atel}#{ep}')\n\n`;
+					`;
 				}
 
-				else {
-					let ad = getAtomByName(atel);
 
+				// Define custom atom
+				else
+				{
+					let ad = getAtomByName(atel);
 					let props = '';
 
+
+					// Fill attributes
 					ad.attr.forEach( (attr) => {
 
-						let sp         = attr.split(':');
-						let attrString = '';
+						let sp = attr.split(':');
 
-						attrString = sp.length === 2 ? `${sp[0]}="${sp[1]}" ` : `${sp[0]} `;
-
-						props += attrString;
+						props += sp.length === 2 ? `${sp[0]}="${sp[1]}" ` : `${sp[0]} `;
 					});
 
-					elemString = `\t//- Element '${ad.name}'\n\tmixin ${atel}(em)\n\t\t//- Mutation\n\t\t- var ep = em === undefined ? '' : '--' + em;\n\n\t\t${ad.tag}(class='${el.name}#{p}__${ad.name}#{ep} ${props}')\n\n`;
+
+					elemString = `
+					//- Element '${ad.name}'
+
+					mixin ${atel}(em)
+						//- Mutation
+						- var ep = em === undefined ? '' : '--' + em;
+					
+						${ad.tag}(class='${block.name}#{p}__${ad.name}#{ep} ${props}')
+					`;
 				}
 
 				mElements += elemString;
@@ -150,11 +124,149 @@ class Molecule {
 		}
 
 
-		let mEnd = `\n\t//- Body\n\tdiv(class='${el.name}#{p}')`;
+		return mStart + mElements + mEnd;
+	}
+	//----------------------------------------
 
-		let result = mStart + mElements + mEnd;
 
-		return result;
+
+
+	// Generating stylus code
+	//----------------------------------------
+	static stylus(block) {
+
+		let
+			mStart = '',
+			mBlock = `.${block.name}\n\t\n`,
+			
+			blockModsElems = '',
+			blockMods      = '',
+			elemString     = '';
+
+		let
+			thereAreAtoms     = block.atoms.length     > 0 && block.atoms[0]     !== '',
+			thereAreMutations = block.mutations.length > 0 && block.mutations[0] !== '';
+
+
+
+		// Define atoms
+		if (thereAreAtoms) {
+			
+			block.atoms.forEach( atel => {
+
+				blockModsElems += `\t\t.${block.name}__${atel}\n\t\t\t\n\n`;
+
+
+				// Define default element
+				if (isNewAtom(atel))
+					elemString = `.${block.name}__${atel}\n\n`;
+				
+
+				// Define custom element
+				else {
+					let ad = getAtomByName(atel);
+
+					let
+						mutString    = '',
+						atomWithMuts = ad.muts.length > 0 && ad.muts[0] !== '';
+
+					if (atomWithMuts) {					
+						ad.muts.forEach( mut => {
+
+							mutString += `\t&--${mut}\n\n`;
+
+						});
+					}
+
+					elemString = `.${block.name}__${atel}\n\n` + mutString;
+				}
+
+				mStart += elemString;
+			});
+		}
+
+
+
+		// Define mutations
+		if (thereAreMutations) {
+			block.mutations.forEach( mut => {
+				blockMods += `\n\t&--${mut}\n\n` + blockModsElems;
+			});
+		}
+
+
+		return mStart + mBlock + blockMods;
+	}
+	//----------------------------------------
+
+}
+
+
+
+
+
+
+// Molecule class
+class Molecule {
+
+	// Constructor
+	constructor(name, muts, atoms) {
+		this.name      = name;
+		this.mutations = muts  ? muts  : [];
+		this.atoms     = atoms ? atoms : [];
+	}
+
+
+
+	// Creating new molecule via prompt
+	static create() {
+		let name, muts, atoms;
+
+		cl(`Creating new molecule. "Ctrl+c" to exit`.gray);
+
+		rl.question(`Name » \n`.green, molName => {
+			name = molName;
+
+			rl.question(`Mutates (space separated)» \n`.green, molMutate => {
+				muts = molMutate.split(' ');
+
+				rl.question(`Atoms » \n`.green + `predefined:`.white + `${getAtomsList(MAINFILE)}\n`.gray, molAtoms => {
+					atoms = molAtoms.split(' ');
+
+					var molecule = new Molecule(name, muts, atoms);
+
+					Molecule.save(molecule);
+				});
+			});
+		});
+
+	}
+
+
+
+	// Saving molecule 
+	static save(mol) {
+
+		let data = jsonfile.readFileSync(MAINFILE);
+
+		if (isNewMolecule(mol.name)) {
+			data.molecules.push(mol);
+
+			jsonfile.writeFileSync(MAINFILE, data, {spaces: 4});
+
+			buildBlocks();
+
+			rl.close();
+		}
+
+		else
+			cl(`Molecule already exists: `.red + `${mol.name}`.yellow);
+	}
+
+
+	static generateJade(el) {
+
+
 	}
 
 
@@ -166,7 +278,7 @@ class Molecule {
 			mStart         = ``,
 			blockModsElems = ``;
 
-		if (el.atoms.length > 0 && el.atoms[0] !== "") {
+		if (el.atoms.length) {
 			el.atoms.forEach( atel => {
 				let elemString = '';
 
@@ -182,7 +294,7 @@ class Molecule {
 
 					let mutString = '';
 
-					if (ad.muts.length > 0 && ad.muts[0] !== "") {					
+					if (ad.muts.length) {					
 						ad.muts.forEach( (mut) => {
 
 							mutString += `\t&--${mut}\n\n`;
@@ -202,7 +314,7 @@ class Molecule {
 
 		let blockMods = '';
 
-		if (el.mutations.length > 0 && el.mutations[0] !== "") {
+		if (el.mutations.length) {
 			el.mutations.forEach( mut => {
 				blockMods += `\t&--${mut}\n\n` + blockModsElems;
 			});
@@ -228,6 +340,7 @@ class Molecule {
 // Atom class
 class Atom {
 
+	// Constructor
 	constructor(name, muts, tag, attr) {
 		this.name = name;
 		this.muts = muts;
@@ -235,6 +348,9 @@ class Atom {
 		this.attr = attr;
 	}
 
+
+
+	// Creating new atom via prompt
 	static create() {
 		let name, muts, tag, attr
 
@@ -253,6 +369,7 @@ class Atom {
 						attr = atomAttr.split(' ');
 
 						var atom = new Atom(name, muts, tag, attr);
+
 						Atom.save(atom);
 						rl.close();
 					});
@@ -261,23 +378,23 @@ class Atom {
 		});
 	}
 
+
+
+	// Saving new atom into moleculate.json
 	static save(atom) {
 
-		let
-			data      = jsonfile.readFileSync(MAINFILE),
-			atoms     = getAtomsList(MAINFILE),
-			atomExist = isNewAtom(atom.name);
+		let data = jsonfile.readFileSync(MAINFILE);
 
-		if (atomExist) {
+		if (isNewAtom(atom.name)) {
 			data.atoms.push(atom);
 
 			jsonfile.writeFileSync(MAINFILE, data, {spaces: 4});
 
-			cl(`Created new atom: `.green  + `${atom.name}`.yellow);
+			cl(`Created new atom: `.green  + `${atom.name}`.gray);
 		}
 
 		else
-			cl(`Atom already exists: `.red + `${atom.name}`.yellow);
+			cl(`Atom already exists: `.red + `${atom.name}`.gray);
 
 	}
 }
@@ -288,6 +405,7 @@ class Atom {
 
 //» FUNCTIONS 
 //----------------------------------------
+
 /*
 Set path option into moleculate.json
 
@@ -307,6 +425,7 @@ function setOptionPath(path) {
 }
 
 
+
 /*
 Return array of current atoms names
 
@@ -314,8 +433,9 @@ Return array of current atoms names
 */
 function getAtomsList(file) {
 
-	let data = jsonfile.readFileSync(file);
-	let array = [];
+	let
+		data  = jsonfile.readFileSync(file),
+		array = [];
 
 	data.atoms.forEach( el => {
 		array.push(el.name);
@@ -334,8 +454,9 @@ Return array of current molecules names
 */
 function getMoleculesList(file) {
 
-	let data = jsonfile.readFileSync(file);
-	let array = [];
+	let
+		data  = jsonfile.readFileSync(file),
+		array = [];
 
 	data.molecules.forEach( el => {
 		array.push(el.name);
@@ -372,85 +493,37 @@ function isNewMolecule(name) {
 }
 
 
-function getAtomByName(name) {
-	var result = '';
 
-	if (isNewAtom(name)) {
+/*
+Return atom object from moleculate.json by atom name
+
+	» name — atom name | string
+*/
+function getAtomByName(name) {
+	var result;
+
+	if (isNewAtom(name))
 		cl(`Error: atom ${name} doesn't exists`.red);
-	}
 
 	else {
-		let data = jsonfile.readFileSync(MAINFILE);
-
-		let atoms = data.atoms;
+		let 
+			data  = jsonfile.readFileSync(MAINFILE),
+			atoms = data.atoms;
 
 		atoms.forEach(el => {
-			if (el.name === name) {
-				result = el;
-			}
-		})
+			el.name === name ? result = el : '';
+		});
 	}
 
 	return result;
 }
 
-
-
-
-
-
-
-
-/*
-Build BEM blocks
-
-	» molecules | array
-	» atoms     | array
-	» path      | string
-*/
-function buildBlocks() {
-	let data = jsonfile.readFileSync(MAINFILE);
-
-	let
-		dir       = path.join(process.cwd(), data.dir),
-		atoms     = data.atoms,
-		molecules = data.molecules;
-
-
-	if (molecules.length === 0) {
-		cl('Error: no molecules initialised'.red);
-		cl('Use --help to list commands'.blue);
-		rl.close();
-	}
-
-
-	molecules.forEach( el => {
-
-		let blockDir = path.join(dir, el.name)
-		
-		let jadeData = Molecule.generateJade(el);
-		let jadeFile = path.join(blockDir, el.name + '.jade');
-
-		let stylData = Molecule.generateStyl(el);
-		let stylFile = path.join(blockDir, el.name + '.styl');
-
-		let jsData = `// ${el.name} scripts goes here\n`;
-		let jsFile = path.join(blockDir, el.name + '.js');
-
-		mkdirp(blockDir, err => {
-
-	    	fs.writeFile(jadeFile, jadeData);
-	    	fs.writeFile(stylFile, stylData);
-	    	fs.writeFile(  jsFile,   jsData);
-
-		});
-
-		cl(`Block ${el.name} created`.green);
-		rl.close();
-
-	});
-}
 //----------------------------------------
+
+
+
+
+
 
 
 
@@ -462,16 +535,11 @@ function buildBlocks() {
 //----------------------------------------
 var args = process.argv;
 
-process.title = 'Moleculate';
-
-const commands = ["new", "n", "--help", "-h", "path", "p", "run", "r", ""];
-
 args.shift(); // current fix
 args.shift(); // Delete first command
 
 var mode = args[0]; 
 var type = args[1];
-
 
 
 // Check if command is valid
@@ -549,5 +617,55 @@ if (mode === "path" || mode === "p") {
 
 if (mode === "run" || mode === "r") {
 	buildBlocks();
+}
+//----------------------------------------
+
+
+
+
+//» BUILD BEM BLOCKS
+//----------------------------------------
+function buildBlocks() {
+	let data = jsonfile.readFileSync(MAINFILE);
+
+	let
+		dir       = path.join(process.cwd(), data.dir),
+		atoms     = data.atoms,
+		molecules = data.molecules;
+
+
+	if (molecules.length === 0) {
+		cl('Error: no molecules initialised'.red);
+		cl('Use --help to list commands'.gray);
+		rl.close();
+	}
+
+
+	molecules.forEach( el => {
+
+		let
+		blockDir = path.join(dir, el.name),
+	
+		jadeData = Generator.jade(el),
+		jadeFile = path.join(blockDir, el.name + '.jade'),
+	
+		stylData = Generator.stylus(el),
+		stylFile = path.join(blockDir, el.name + '.styl'),
+	
+		jsData   = `// ${el.name} scripts goes here\n`,
+		jsFile   = path.join(blockDir, el.name + '.js');
+
+
+		mkdirp(blockDir, err => {
+	    	fs.writeFile(jadeFile, jadeData);
+	    	fs.writeFile(stylFile, stylData);
+	    	fs.writeFile(jsFile  , jsData  );
+		});
+
+
+		cl(`Blocks created`.green);
+		rl.close();
+
+	});
 }
 //----------------------------------------

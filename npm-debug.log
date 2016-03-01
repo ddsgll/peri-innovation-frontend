@@ -1,45 +1,32 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'run-script',
-1 verbose cli   'block' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
 2 info using npm@3.3.12
 3 info using node@v5.5.0
-4 verbose run-script [ 'preblock', 'block', 'postblock' ]
-5 info lifecycle Atomic-Starter@0.0.1~preblock: Atomic-Starter@0.0.1
-6 silly lifecycle Atomic-Starter@0.0.1~preblock: no script for preblock, continuing
-7 info lifecycle Atomic-Starter@0.0.1~block: Atomic-Starter@0.0.1
-8 verbose lifecycle Atomic-Starter@0.0.1~block: unsafe-perm in lifecycle true
-9 verbose lifecycle Atomic-Starter@0.0.1~block: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/ismail/side/quark/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
-10 verbose lifecycle Atomic-Starter@0.0.1~block: CWD: /Users/ismail/side/quark
-11 silly lifecycle Atomic-Starter@0.0.1~block: Args: [ '-c', 'block.js n m' ]
-12 info lifecycle Atomic-Starter@0.0.1~block: Failed to exec block script
-13 verbose stack Error: Atomic-Starter@0.0.1 block: `block.js n m`
-13 verbose stack spawn ENOENT
-13 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:17:16)
-13 verbose stack     at emitTwo (events.js:100:13)
-13 verbose stack     at ChildProcess.emit (events.js:185:7)
-13 verbose stack     at maybeClose (internal/child_process.js:821:16)
-13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-14 verbose pkgid Atomic-Starter@0.0.1
-15 verbose cwd /Users/ismail/side/quark
-16 error Darwin 14.5.0
-17 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run-script" "block"
-18 error node v5.5.0
-19 error npm  v3.3.12
-20 error file sh
-21 error code ELIFECYCLE
-22 error errno ENOENT
-23 error syscall spawn
-24 error Atomic-Starter@0.0.1 block: `block.js n m`
-24 error spawn ENOENT
-25 error Failed at the Atomic-Starter@0.0.1 block script 'block.js n m'.
-25 error Make sure you have the latest version of node.js and npm installed.
-25 error If you do, this is most likely a problem with the Atomic-Starter package,
-25 error not with npm itself.
-25 error Tell the author that this fails on your system:
-25 error     block.js n m
-25 error You can get their info via:
-25 error     npm owner ls Atomic-Starter
-25 error There is likely additional logging output above.
-26 verbose exit [ 1, true ]
+4 verbose stack Error: Failed to parse json
+4 verbose stack Trailing comma in object at 12:3
+4 verbose stack   },
+4 verbose stack   ^
+4 verbose stack     at parseError (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:379:11)
+4 verbose stack     at parseJson (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:68:23)
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:48:5
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:76:16
+4 verbose stack     at tryToString (fs.js:414:3)
+4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:401:12)
+5 verbose cwd /Users/ismail/side/quark
+6 error Darwin 14.5.0
+7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+8 error node v5.5.0
+9 error npm  v3.3.12
+10 error file /Users/ismail/side/quark/package.json
+11 error code EJSONPARSE
+12 error Failed to parse json
+12 error Trailing comma in object at 12:3
+12 error   },
+12 error   ^
+13 error File: /Users/ismail/side/quark/package.json
+14 error Failed to parse package.json data.
+14 error package.json must be actual JSON, not just JavaScript.
+14 error
+14 error This is not a bug in npm.
+14 error Tell the package author to fix their package.json file. JSON.parse
+15 verbose exit [ 1, true ]
