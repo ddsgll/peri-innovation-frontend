@@ -11,7 +11,8 @@
     "start": "gulp serve",
     "atom": "node block n a",
     "block-path": "node block p",
-    "block": "node block n m"
+    "block": "node block n m",
+    "git-upd": "git add . && git commit -m \"Some upd\" && git push"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.5.0",
