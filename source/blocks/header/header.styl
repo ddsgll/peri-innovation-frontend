@@ -8,18 +8,24 @@ header
 .header
 	background transparent
 	padding 1.4rem 0
-	display -webkit-flex
-	display -moz-flex
-	display -ms-flex
-	display -o-flex
 	display flex
 	align-items center
 	justify-content space-between
-	
+
+	+xs()
+		align-items flex-start
+		padding .5rem
+
 	&__logo
 		display inline-block
 		vertical-align middle
-		
+
+		+xs()
+			display block
+
 		img
 			display inline-block
 			max-width 100%
+
+			+xs()
+				max-width 64px

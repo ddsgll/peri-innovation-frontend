@@ -1,7 +1,7 @@
 include ../button/button.jade
 
 mixin main-inc__item(num, text)
-	.col-lg-3
+	.col-lg-3.col-xs-6
 		.main-inc__item
 			span= num
 			span= text
@@ -10,10 +10,10 @@ mixin main-inc()
 	.main-inc
 		.container
 			.row
-				.col-lg-12
+				.col-lg-12.col-xs-12
 					h1.title Инкубатор
 
-				.col-lg-10.col-lg-offset-1
+				.col-lg-10.col-lg-offset-1.col-xs-12.col-xs-offset-0
 
 					.row
 						+main-inc__item("7 500", "Участников мероприятия")
@@ -24,5 +24,5 @@ mixin main-inc()
 		.main-inc__buttons
 			.container
 				.row
-					.col-lg-4.col-lg-offset-4
+					.col-lg-4.col-lg-offset-4.col-xs-12.col-xs-offset-0
 						+button("Об инкубаторе", "outline")

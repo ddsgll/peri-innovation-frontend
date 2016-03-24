@@ -6,20 +6,34 @@ nav
 	display inline-block
 	vertical-align middle
 	z-index 1000
-	
+
+	+xs()
+		display block
+		text-align left
+		width 100%
+		padding-left 1rem
+
 	li
 		display inline-block
 		margin-right 2rem
-		
+
+		+xs()
+			margin-right 1.5rem
+			margin-bottom .5rem
+
 		&:last-child
 			margin-right 0
-	
+
 	&__link
 		font-size 1rem
 		color #fff
 		font-weight 300
 		cursor pointer
-		
+
+		+xs()
+			font-size 1rem
+			font-weight 500
+
 		&:not(&--active)::after
 			content ''
 			display inline-block
@@ -31,11 +45,11 @@ nav
 			left 0
 			animation underlineOut .2s
 			animation-timing-function cubic-bezier(.8,.2,.2,.8)
-			
+
 		&:not(&--active):hover::after
 			animation underlineIn .2s
 			width 100%
-			
+
 		&--active::after
 			content ''
 			display inline-block
@@ -45,4 +59,3 @@ nav
 			background #fff
 			bottom -8px
 			left 0
-			
