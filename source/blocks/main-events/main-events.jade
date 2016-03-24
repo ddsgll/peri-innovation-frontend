@@ -1,0 +1,25 @@
+include ../event-preview/event-preview
+include ../sect-header/sect-header
+include ../button/button
+
+mixin main-events()
+	.main-events
+		+sect-header("img/heading/main-events.jpg", "Мероприятия")
+
+		.container
+			.row
+				.col-lg-3
+					+event-preview("img/events/1.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
+
+				.col-lg-3
+					+event-preview("img/events/2.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
+
+				.col-lg-3
+					+event-preview("img/events/3.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
+
+				.col-lg-3
+					+event-preview("img/events/4.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
+
+			.row
+				.col-lg-4.col-lg-offset-4
+					+button("Посмотреть все мероприятия", "outline black")

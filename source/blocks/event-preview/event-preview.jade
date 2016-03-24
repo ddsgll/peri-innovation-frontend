@@ -1,0 +1,13 @@
+include ../button/button
+
+mixin event-preview(img, title, date, info)
+	.event-preview
+		img(src=img, alt="")
+
+		.event-preview__info
+			span= title
+			span= date
+			span.inf= info
+
+			.event-preview__button
+				+button("Регистрация", "outline")

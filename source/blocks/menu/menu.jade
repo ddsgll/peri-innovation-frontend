@@ -1,0 +1,6 @@
+mixin menu(data)
+
+	nav
+		ul.menu
+			each value, key in data
+				li: a(href="##{value}").menu__link= key

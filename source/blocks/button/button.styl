@@ -1,0 +1,65 @@
+.button
+	display block
+	padding .8rem
+	text-align center
+	font-size 1rem
+	background #fff
+	color #222
+	border 2px solid #fff
+	margin 2rem 0
+	cursor pointer
+	transition background .6s ease
+	overflow hidden
+	
+	span
+		display block
+		text-align center
+		
+	:first-child
+		position relative
+		text-align center
+		transform translateY(0px)
+		transition all .4s ease
+		opacity 1
+		
+	:last-child
+		position absolute
+		width 100%
+		margin-left -0.8rem
+		text-align center
+		// transform translateY(24px)
+		opacity 0
+		transition all .4s ease
+		
+
+	&:hover
+		:first-child
+			transform translateY(-0.8rem)
+			opacity 0
+			
+		:last-child
+			transform translateY(-21px)
+			opacity 1
+			
+			
+	&.black
+		background #000
+		border 2px solid #000
+		color #fff
+		
+	
+	&.outline
+		background transparent
+		color #fff
+		font-weight 400
+			
+		&:hover
+			background #fff
+			color #222
+		
+		&.black
+			color #000
+			
+			&:hover
+				background #000
+				color #fff

@@ -1,17 +1,19 @@
-extends ../layouts/main
+extends ../layouts/main.jade
+
+
+include ../blocks/header/header.jade
+include ../blocks/preloader/preloader.jade
+include ../blocks/sect-main/sect-main.jade
+
 
 block title
-	title Main Page
+	title Пери инновации
 
 block content
-	.container
-		
-		h1
-			i.sf.sf-spy
-			| Main content
-
-	.container
-		.row
-			.col-md-4 Hello World
-			.col-md-4 Hello World
-			.col-md-4 Hello World
+	+preloader()
+	
+	+header()
+	
+	+section-index()
+	+section-incubator()
+	+section-events()

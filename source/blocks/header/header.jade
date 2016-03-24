@@ -1,0 +1,14 @@
+include ../menu/menu
+
+mixin header__logo(src)
+	.header__logo
+		a(href="#index"): img(src=src, alt="Пери Инновации")
+
+mixin header()
+
+	header
+		.container
+			.row
+				.header
+					+header__logo("img/logo.png")
+					+menu({"Инкубатор":"incubator", "Мероприятия":"events", "Резиденты":"residents", "Контакты":"contact"})

@@ -1,0 +1,12 @@
+mixin sect-header(img, title, desc)
+	.sect-header
+		img(src=img, alt=title)
+		
+		.sect-header__inf
+			h1= title
+			
+			if desc
+				span= desc
+
+			else
+				span   

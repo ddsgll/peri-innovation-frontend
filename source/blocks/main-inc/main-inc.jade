@@ -1,0 +1,28 @@
+include ../button/button.jade
+
+mixin main-inc__item(num, text)
+	.col-lg-3
+		.main-inc__item
+			span= num
+			span= text
+
+mixin main-inc()
+	.main-inc
+		.container
+			.row
+				.col-lg-12
+					h1.title Инкубатор
+
+				.col-lg-10.col-lg-offset-1
+
+					.row
+						+main-inc__item("7 500", "Участников мероприятия")
+						+main-inc__item("514"  , "Заявок на статус резидента")
+						+main-inc__item("21"   , "Стартап, получивший поддержку")
+						+main-inc__item("40"   , "Менторов предпринимателей")
+
+		.main-inc__buttons
+			.container
+				.row
+					.col-lg-4.col-lg-offset-4
+						+button("Об инкубаторе", "outline")

@@ -22,4 +22,9 @@ gulp.task('stylus', () => {
 			title:   "STYLUS",
 			message: "Styles transpiled successfully"
 		}));
+
+	gulp.src('source/styles/preloader.styl')
+		.pipe( stylus() )
+		.pipe( prefix() )
+		.pipe( gulp.dest( 'dev/css' ) );
 });

@@ -1,0 +1,21 @@
+include ../main-slider/main-slider
+include ../main-inc/main-inc
+include ../main-events/main-events
+
+
+//- Slider section
+mixin section-index()
+	section.sect-main#index
+		+main-slider()
+
+
+//- Incubator info
+mixin section-incubator()
+	section.sect-main#incubator
+		+main-inc()
+
+
+//- Events section
+mixin section-events()
+	section.sect-main#events
+		+main-events()

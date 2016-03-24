@@ -5,10 +5,14 @@ html
 	margin 0
 	
 body
-	font-size 12px
+	font-size 16px
 	font-family mainFont, arial, 'sans-serif'
 	color textColor
 	line-height 1.4rem
+	transform translate3d(0, 0, 0)
+	overflow-x hidden
+	background periRed
+	
 	
 	+xs()
 		font-size 2em
@@ -28,21 +32,6 @@ a:hover
 a:visited
 a:active
 	text-decoration none
-	color linkColor
-	border-bottom 1px solid transparent
-	transition border .3s ease
-	
-a:hover
-	border-bottom 1px solid #000
-	
-	&:active
-		color #000
-	
-a:visited
-	color lighten(linkColor, 10%)
-	
-	&:hover
-		border-bottom 1px solid lighten(linkColor, 16%)
 	
 
 
