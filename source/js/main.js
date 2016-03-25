@@ -1,66 +1,99 @@
+var isLoading = true;
+var isMain = $(".main-slider").length == true;
+var mainSections = ['#index', '#incubator', '#events', '#residents', '#contact'];
+var currentSection = 0;
+
 $(document).ready( function() {
 
-	setLinksPreload();
-	initMenu();
-	hideAllSections();
+	if (isMain) {
+
+		setLinksPreload();
+		initMenu();
+		hideAllSections();
+
+	}
 
 });
 
 
 $(window).load( function() {
 
-	var hash = window.location.hash;
+	if (isMain) {
 
-	if (hash !== undefined && hash !== '')
-		switchToSection(hash);
-	else
-		mainShowSection("#index");
+		var hash = window.location.hash;
 
-	disablePreload();
+		hash !== '' ?
+			switchToSection(hash) :
+			mainShowSection("#index");
+
+		disablePreload();
+		setSectionsScroll();
+
+		isLoading = false;
+
+
+	}
+
 });
 
 
 function setLinksPreload() {
 
 	$('a').on('click', function(e) {
-		e.preventDefault();
 
-		var link = $(this).attr("href");
+		if (!isLoading) {
 
-		enablePreload();
+			isLoading = true
 
-		setTimeout(function() {	window.location.href = link; }, 1000);
+			e.preventDefault();
+
+			var link = $(this).attr("href");
+
+			enablePreload();
+
+			setTimeout(function() {	window.location.href = link; }, 1000);
+		}
+
 	});
 }
 
-function hideAllSections() {
-	$(".sect-main").hide();
-}
+
+// function hideAllSections() {
+// 	$(".sect-main").hide();
+// }
 
 
-function mainHideSection(id) {
-	$(id).hide();
-}
+// function mainHideSection(id) {
+// 	$(id).hide().removeClass("showSection");
+// }
 
 
-function mainShowSection(id) {
+// function mainShowSection(id) {
 
-	$(id).show().addClass("showSection");
+// 	$(id).show().addClass("showSection");
 
-	id !== "#index" ? destroySlider() : initSlider();
+// 	id !== "#index" ? destroySlider() : initSlider();
 
-}
+// }
 
 
-function switchToSection(id) {
+// function switchToSection(id) {
 
-	enablePreload();
+// 	if (isMain) {
 
-	setTimeout(function() {
-	
-		hideAllSections();
-		mainShowSection(id);
-		disablePreload();
+// 		isLoading = true;
 
-	}, 1000);
-}
+// 		enablePreload();
+
+// 		setTimeout(function() {
+		
+// 			hideAllSections();
+// 			mainShowSection(id);
+// 			disablePreload();
+
+// 			isLoading = false;
+
+// 		}, 1000);
+
+// 	}
+// }

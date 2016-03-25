@@ -1,6 +1,7 @@
 include ../main-slider/main-slider
 include ../main-inc/main-inc
 include ../main-events/main-events
+include ../main-residents/main-residents
 
 
 //- Slider section
@@ -19,3 +20,9 @@ mixin section-incubator()
 mixin section-events()
 	section.sect-main#events
 		+main-events()
+
+
+//- Резиденты
+mixin section-residents()
+	section.sect-main#residents
+		+main-residents()

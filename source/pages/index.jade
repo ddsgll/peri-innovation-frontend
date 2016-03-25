@@ -2,7 +2,6 @@ extends ../layouts/main.jade
 
 
 include ../blocks/header/header.jade
-include ../blocks/preloader/preloader.jade
 include ../blocks/sect-main/sect-main.jade
 
 
@@ -10,10 +9,9 @@ block title
 	title Пери инновации
 
 block content
-	+preloader()
-	
 	+header()
 	
 	+section-index()
 	+section-incubator()
 	+section-events()
+	+section-residents()

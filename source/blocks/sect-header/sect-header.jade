@@ -1,12 +1,13 @@
-mixin sect-header(img, title, desc)
-	.sect-header
+mixin sect-header(img, title, desc, type)
+
+	- var sectId = type !== undefined ? type : '';
+
+	.sect-header(id="#{sectId}")
 		img(src=img, alt=title)
 		
 		.sect-header__inf
-			h1= title
+			if title
+				h1= title
 			
 			if desc
-				span= desc
-
-			else
-				span   
+				span= desc 

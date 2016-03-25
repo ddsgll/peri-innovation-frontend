@@ -6,6 +6,7 @@
 	text-align center
 	overflow hidden
 	background-size cover !important
+	background-attachement fixed !important
 	
 	img
 		width 100%
@@ -13,7 +14,7 @@
 	&__inf
 		width 100%
 		position absolute
-		bottom 0
+		bottom .5rem
 		text-align center
 	
 		h1
@@ -22,9 +23,15 @@
 			font-size 3rem
 			color #fff
 			font-weight 100
+			margin 0
+			margin-bottom 1rem
+			
+			+xs()
+				font-size 1.6rem
 			
 		span
 			font-size 1rem
 			font-weight 400
-			margin 1rem 0
+			padding 1rem 0
 			text-align center
+			color #fff

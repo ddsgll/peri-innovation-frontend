@@ -6,6 +6,9 @@
 	overflow hidden
 	background-size cover !important
 	
+	+xs()
+		margin .5rem 0 0 0
+	
 	img
 		max-width 100%
 		
@@ -21,16 +24,25 @@
 		color #fff
 		transition all .4s ease
 		
+		+xs()
+			padding .5rem
+		
 		span
 			display block
 			font-size 1rem
 			font-weight 100
+			
+			+xs()
+				font-size .8rem
 			
 			&.inf
 				transition height .4s ease
 				overflow hidden
 				height 0
 				font-size 1rem
+				
+				+xs()
+					font-size .6rem
 		
 	&__button
 		display block

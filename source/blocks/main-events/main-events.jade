@@ -4,22 +4,22 @@ include ../button/button
 
 mixin main-events()
 	.main-events
-		+sect-header("img/heading/main-events.jpg", "Мероприятия")
+		+sect-header("img/heading/main-events.jpg", "Мероприятия", '',"main-events-header")
 
 		.container
 			.row
-				.col-lg-3
+				.col-lg-3.col-xs-12
 					+event-preview("img/events/1.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
 
-				.col-lg-3
+				.col-lg-3.col-xs-12
 					+event-preview("img/events/2.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
 
-				.col-lg-3
+				.col-lg-3.col-xs-12
 					+event-preview("img/events/3.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
 
-				.col-lg-3
+				.col-lg-3.col-xs-12
 					+event-preview("img/events/4.jpg", "Курсы Python", "23 марта в 19:00", "Спикер – Дмитрий Карпов")
 
 			.row
-				.col-lg-4.col-lg-offset-4
+				.col-lg-4.col-lg-offset-4.col-sm-6.col-sm-offset-3.col-xs-12.col-xs-offset-0
 					+button("Посмотреть все мероприятия", "outline black")

@@ -6,17 +6,19 @@ function initMenu() {
 
 	menuItems.on('click', function(e) {
 
-		e.preventDefault();
+		if (isMain) {
+			e.preventDefault();
 
-		var link = $(this).attr("href");
+			var link = $(this).data("name");
 
-		menuItems.removeClass("menu__link--active");
+			menuItems.removeClass("menu__link--active");
 
-		$(this).addClass("menu__link--active");
+			$(this).addClass("menu__link--active");
 
-		switchToSection(link);
+			switchToSection(link);
 
-		document.title = $(this).text() + " | Пери инновации";
+			document.title = $(this).text() + " | Пери инновации";
+		}
 	});
 
 
@@ -24,14 +26,18 @@ function initMenu() {
 
 	$(".header__logo").on('click', function(e) {
 
-		e.preventDefault();
+		if (isMain) {
 
-		menuItems.removeClass("menu__link--active");
+			e.preventDefault();
 
-		var link = $(this).children("a").attr("href");
+			menuItems.removeClass("menu__link--active");
 
-		switchToSection(link);
+			var link = $(this).children("a").data("name");
 
-		document.title = "Пери инновации"
+			switchToSection(link);
+
+			document.title = "Пери инновации"
+		}
+
 	});
 }
