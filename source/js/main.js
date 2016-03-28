@@ -8,6 +8,7 @@ $(document).ready( function() {
 	if (isMain) {
 
 		setLinksPreload();
+		initMainResSlider();
 		initMenu();
 		hideAllSections();
 

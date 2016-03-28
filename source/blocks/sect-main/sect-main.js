@@ -51,12 +51,10 @@ function mainShowSection(id) {
 
 	if (id === "#index") {
 		initSlider();
-		destroyMainResSlider();
 	}
 
-	else if (id === "#residents") {
+	else {
 		destroySlider();
-		initMainResSlider();
 	}
 
 }
