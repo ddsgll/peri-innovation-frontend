@@ -1,0 +1,19 @@
+include ../sect-header/sect-header
+include ../button/button
+
+mixin main-contact()
+	.main-contact
+		+sect-header("img/heading/main-contact.jpg", "Контакты")
+
+		.container
+			.row
+				.col-xs-12
+					.info
+						span г.Махачкала, 123467
+						span ул. Чернышевского, д. 23,
+						span офис 5
+						span E-mail: info@periinnova.ru
+						span +7 (567) 657 65 46 47
+
+				.col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-12.col-xs-offset-0
+					+button("Показать схему проезда", "outline black")

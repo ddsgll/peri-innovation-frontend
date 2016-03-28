@@ -1,6 +1,24 @@
 include ../sect-header/sect-header
 include ../button/button
 
+mixin main-residents__slider-item(project, name, image)
+	.main-residents__slider-item(data-project=project, data-name=name)
+		.col-lg-6.col-lg-offset-3
+			.main-residents__slider-photo
+				img(src=image, alt=project)
+
+		.col-lg-4.col-lg-offset-4
+			+button("Посмотреть презентацию", "outline black")
+
+
+
 mixin main-residents()
 	.main-residents
-		+sect-header("img/heading/main-residents.jpg")
+		+sect-header("img/heading/main-residents.jpg", " ", " ", "mainResHeader")
+
+		.container
+			.main-residents__slider#mainResidentsSlider
+				+main-residents__slider-item("Умная емкость", "Магомед Штанчаев", "img/photos/residents/1.jpg")
+				+main-residents__slider-item("Неумная емкость", "Не Магомед Штанчаев", "img/photos/residents/1.jpg")
+				+main-residents__slider-item("Неуемная кость", "Магомед Магомедов", "img/photos/residents/1.jpg")
+				+main-residents__slider-item("Емкая умность", "Магомед Штанчаев", "img/photos/residents/1.jpg")

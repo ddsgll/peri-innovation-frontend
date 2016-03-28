@@ -8,6 +8,7 @@ function mainSectionsScroll(e) {
 		isLoading = true;
 		currentSection !== mainSections.length-1 ? currentSection++ : console.log("You're at the end");
 		var index = mainSections[ currentSection ];
+		setMenuActive(index);
 		switchToSection(index);
 	}
 
@@ -15,6 +16,7 @@ function mainSectionsScroll(e) {
 		isLoading = true;
 		currentSection !== 0 ? currentSection-- : console.log("You're at the start");
 		var index = mainSections[ currentSection ];
+		setMenuActive(index);
 		switchToSection(index);
 	}
 
@@ -47,7 +49,15 @@ function mainShowSection(id) {
 
 	$(id).show().addClass("showSection");
 
-	id !== "#index" ? destroySlider() : initSlider();
+	if (id === "#index") {
+		initSlider();
+		destroyMainResSlider();
+	}
+
+	else if (id === "#residents") {
+		destroySlider();
+		initMainResSlider();
+	}
 
 }
 

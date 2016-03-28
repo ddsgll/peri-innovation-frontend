@@ -2,6 +2,7 @@ include ../main-slider/main-slider
 include ../main-inc/main-inc
 include ../main-events/main-events
 include ../main-residents/main-residents
+include ../main-contact/main-contact
 
 
 //- Slider section
@@ -26,3 +27,10 @@ mixin section-events()
 mixin section-residents()
 	section.sect-main#residents
 		+main-residents()
+
+
+
+//- Контакты
+mixin section-contact()
+	section.sect-main#contact
+		+main-contact()

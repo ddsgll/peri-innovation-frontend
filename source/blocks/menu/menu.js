@@ -16,8 +16,6 @@ function initMenu() {
 			$(this).addClass("menu__link--active");
 
 			switchToSection(link);
-
-			document.title = $(this).text() + " | Пери инновации";
 		}
 	});
 
@@ -35,9 +33,17 @@ function initMenu() {
 			var link = $(this).children("a").data("name");
 
 			switchToSection(link);
-
-			document.title = "Пери инновации"
 		}
 
 	});
+}
+
+function setMenuActive(id) {
+	var menuItems = $(".menu__link");
+
+	var curMenuItem = $(".menu__link[data-name='" + id + "']");
+
+	menuItems.removeClass("menu__link--active");
+
+	curMenuItem.addClass("menu__link--active");
 }

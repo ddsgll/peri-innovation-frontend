@@ -22,9 +22,14 @@ $(window).load( function() {
 
 		var hash = window.location.hash;
 
-		hash !== '' ?
-			switchToSection(hash) :
+		if (hash !== '') {
+			currentSection = mainSections.indexOf(hash);
+			switchToSection(hash);
+		}
+
+		else {
 			mainShowSection("#index");
+		}
 
 		disablePreload();
 		setSectionsScroll();
@@ -56,44 +61,3 @@ function setLinksPreload() {
 
 	});
 }
-
-
-// function hideAllSections() {
-// 	$(".sect-main").hide();
-// }
-
-
-// function mainHideSection(id) {
-// 	$(id).hide().removeClass("showSection");
-// }
-
-
-// function mainShowSection(id) {
-
-// 	$(id).show().addClass("showSection");
-
-// 	id !== "#index" ? destroySlider() : initSlider();
-
-// }
-
-
-// function switchToSection(id) {
-
-// 	if (isMain) {
-
-// 		isLoading = true;
-
-// 		enablePreload();
-
-// 		setTimeout(function() {
-		
-// 			hideAllSections();
-// 			mainShowSection(id);
-// 			disablePreload();
-
-// 			isLoading = false;
-
-// 		}, 1000);
-
-// 	}
-// }
