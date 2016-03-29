@@ -12,7 +12,7 @@ function initMainResSlider() {
 		cellSelector: ".main-residents__slider-item"
 	});
 
-	flickRes.on( 'cellSelect', function() {
+	flickRes.on('cellSelect', function() {
 
 		if (flickRes) {		
 			var curProject = flickRes.data('flickity').selectedElement.dataset.project;
@@ -22,7 +22,7 @@ function initMainResSlider() {
 
 			setMainHeaderState("#mainResHeader", curProject, curName);
 		}
-		
+
 	});
 }
 
