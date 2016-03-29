@@ -5,9 +5,12 @@ function initMenu() {
 
 
 	menuItems.on('click', function(e) {
+        var index = $(this).parent().index() + 1;
 
 		if (isMain) {
 			e.preventDefault();
+
+            currentSection = index;
 
 			var link = $(this).data("name");
 

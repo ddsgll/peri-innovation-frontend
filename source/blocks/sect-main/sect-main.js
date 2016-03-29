@@ -1,29 +1,45 @@
+// Скролл секций на главной странице
 function mainSectionsScroll(e) {
 	e = e || window.event;
 
 	var delta = e.deltaY || e.detail || e.wheelDelta;
 
-
 	if (delta > 140 && !isLoading) {
 		isLoading = true;
-		currentSection !== mainSections.length-1 ? currentSection++ : console.log("You're at the end");
-		var index = mainSections[ currentSection ];
-		setMenuActive(index);
-		switchToSection(index);
+
+        if (currentSection !== mainSections.length-1) {
+            currentSection++;
+            var index = mainSections[ currentSection ];
+            setMenuActive(index);
+            switchToSection(index);
+        }
+
+        else {
+            console.log("You're at the end");
+        }
 	}
 
 	else if (delta < -140 && !isLoading) {
 		isLoading = true;
-		currentSection !== 0 ? currentSection-- : console.log("You're at the start");
-		var index = mainSections[ currentSection ];
-		setMenuActive(index);
-		switchToSection(index);
+
+		if (currentSection !== 0) {
+            currentSection--;
+            var index = mainSections[ currentSection ];
+            setMenuActive(index);
+            switchToSection(index);
+        }
+
+        else {
+            console.log("You're at the start");
+        }
+
 	}
 
 	e.preventDefault ? e.preventDefault() : (e.returnValue = false);
 }
 
 
+// Инициализация скролла на секциях
 function setSectionsScroll() {
 	var sections = [].slice.call( document.querySelectorAll(".sect-main") );
 
@@ -35,31 +51,31 @@ function setSectionsScroll() {
 }
 
 
+// Прячем все секции
 function hideAllSections() {
 	$(".sect-main").hide();
 }
 
 
+// Прячем секцию по id
 function mainHideSection(id) {
 	$(id).hide();
 }
 
 
+// Показываем секцию по id
 function mainShowSection(id) {
-
 	$(id).show().addClass("showSection");
 
-	if (id === "#index") {
+	if (id === "#index")
 		initSlider();
-	}
 
-	else {
+	else
 		destroySlider();
-	}
-
 }
 
 
+// Переключение на секцию по id
 function switchToSection(id) {
 
 	if (isMain) {
@@ -69,14 +85,22 @@ function switchToSection(id) {
 		enablePreload();
 
 		setTimeout(function() {
-		
+
 			hideAllSections();
 			mainShowSection(id);
 			disablePreload();
 
 			isLoading = false;
 
-		}, 1000);
+		}, 500);
 
 	}
+}
+
+
+// Проверка на скролл
+function isBound() {
+    
+
+    return;
 }

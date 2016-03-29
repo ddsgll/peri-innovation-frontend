@@ -12,9 +12,9 @@ function initMainResSlider() {
 		cellSelector: ".main-residents__slider-item"
 	});
 
-	flickRes.on('cellSelect', function() {
+	flickRes.on( 'cellSelect', function() {
 
-		if (flickRes) {		
+		if (flickRes) {
 			var curProject = flickRes.data('flickity').selectedElement.dataset.project;
 			var curName    = flickRes.data('flickity').selectedElement.dataset.name;
 

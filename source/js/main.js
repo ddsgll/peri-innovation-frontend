@@ -25,6 +25,7 @@ $(window).load( function() {
 
 		if (hash !== '') {
 			currentSection = mainSections.indexOf(hash);
+            setMenuActive(hash);
 			switchToSection(hash);
 		}
 

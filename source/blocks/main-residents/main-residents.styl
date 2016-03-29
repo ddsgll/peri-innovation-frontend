@@ -1,44 +1,55 @@
 .main-residents
-	height 100%
-	background #fff
-	
-	&__slider
-		margin 2rem 0 0 0
-		
-	&__slider-item
-		width 100%
-	
-	&__slider-photo
-		width 100%
-		object-fit cover
-		line-height 1
-		font-size 0px
-		min-height 400px
-		background #ddd
-		
-		img
-			display inline-block
-			max-width 100%
-			
-	.flickity-page-dots
-		bottom 0px
+    height 100%
+    background #fff
 
-		li.dot
-			width 10px
-			height 10px
-			background #636363
-			opacity 1
-			transition all 1s ease
-			transform perspective(1000) rotateX(0deg)
-			border 1px solid transparent
-			margin 0 4px
+    &__slider
+        margin 2rem 0 0 0
 
-			+xs()
-				width 24px
-				height 24px
+    &__slider-item
+        width 100%
 
-			&.is-selected
-				background #fff
-				transition all .4s ease
-				transform perspective(1000) rotateX(180deg)
-				border 1px solid #222
+        .button
+            margin 1rem 0
+
+            +xs()
+                font-size .8rem
+                margin 1rem
+
+    &__slider-photo
+        width 100%
+        object-fit cover
+        line-height 1
+        font-size 0px
+        min-height 200px
+
+        img
+            display inline-block
+            max-width 100%
+            max-height 100%
+
+
+    .flickity-page-dots
+        bottom 0px
+
+        +xs()
+            bottom -32px
+
+        li.dot
+            width 10px
+            height 10px
+            background #636363
+            opacity 1
+            transition all 1s ease
+            transform perspective(1000) rotateX(0deg)
+            border 1px solid transparent
+            margin 0 4px
+
+            +xs()
+                width 16px
+                height 16px
+
+            &.is-selected
+                background #fff
+                transition all .4s ease
+                transform perspective(1000) rotateX(180deg)
+                border 1px solid #222
