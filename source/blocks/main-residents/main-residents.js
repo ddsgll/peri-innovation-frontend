@@ -12,6 +12,14 @@ function initMainResSlider() {
 		cellSelector: ".main-residents__slider-item"
 	});
 
+    $(".main-residents__arrow.left").on('click', function() {
+        mainResSlider.flickity('previous')
+    });
+
+    $(".main-residents__arrow.right").on('click', function() {
+        mainResSlider.flickity('next')
+    });
+
 	flickRes.on( 'cellSelect', function() {
 
 		if (flickRes) {

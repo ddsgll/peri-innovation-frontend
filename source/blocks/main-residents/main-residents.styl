@@ -7,6 +7,14 @@
 
     &__slider-item
         width 100%
+        transition opacity .1s ease, transform .1s ease
+        transform perspective(1000px) rotateY(-45deg) scale(.7,.7)
+        opacity 0
+
+        &.is-selected
+            transform perspective(1000px) rotateY(0deg) scale(1,1)
+            opacity 1
+            transition opacity .6s ease, transform 1s ease
 
         .button
             margin 1rem 0
@@ -26,6 +34,31 @@
             display inline-block
             max-width 100%
             max-height 100%
+
+
+    &__arrow
+        position absolute
+        top 50%
+        margin-top -36px
+
+        &.left
+            left -36px
+
+            +md()
+                left 0
+
+            +sm()
+                left 0
+
+        &.right
+            right -36px
+
+            +md()
+                left 0
+
+            +sm()
+                left 0
+
 
 
     .flickity-page-dots

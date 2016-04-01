@@ -1,24 +1,30 @@
 include ../sect-header/sect-header
 include ../button/button
+include ../slide-arrow/slide-arrow
 
 mixin main-residents__slider-item(project, name, image)
-	.main-residents__slider-item(data-project=project, data-name=name)
-		.col-lg-6.col-lg-offset-3.col-sm-6.col-sm-offset-3.col-xs-12.col-xs-offset-0
-			.main-residents__slider-photo
-				img(src=image, alt=project)
+    .main-residents__slider-item(data-project=project, data-name=name)
+        .col-lg-6.col-lg-offset-3.col-sm-6.col-sm-offset-3.col-xs-12.col-xs-offset-0
+            .main-residents__slider-photo
+                img(src=image, alt=project)
 
-		.col-lg-4.col-lg-offset-4.col-sm-6.col-sm-offset-3.col-xs-12.col-xs-offset-0
-			+button("Посмотреть презентацию", "outline black")
+        .col-lg-4.col-lg-offset-4.col-sm-6.col-sm-offset-3.col-xs-12.col-xs-offset-0
+            +button("Посмотреть презентацию", "outline black")
 
 
 
 mixin main-residents()
-	.main-residents
-		+sect-header("img/heading/main-residents.jpg", " ", " ", "mainResHeader")
+    .main-residents
+        +sect-header("img/heading/main-residents.jpg", " ", " ", "mainResHeader")
 
-		.container
-			.main-residents__slider#mainResidentsSlider
-				+main-residents__slider-item("Умная емкость", "Магомед Штанчаев", "img/photos/residents/1.jpg")
-				+main-residents__slider-item("Неумная емкость", "Не Магомед Штанчаев", "img/photos/residents/1.jpg")
-				+main-residents__slider-item("Неуемная кость", "Магомед Магомедов", "img/photos/residents/1.jpg")
-				+main-residents__slider-item("Емкая умность", "Магомед Штанчаев", "img/photos/residents/1.jpg")
+        .container
+            .main-residents__arrow.left
+                +slide-arrow('left')
+            .main-residents__arrow.right
+                +slide-arrow('right')
+                
+            .main-residents__slider#mainResidentsSlider
+                +main-residents__slider-item("Умная емкость", "Магомед Штанчаев", "img/photos/residents/1.jpg")
+                +main-residents__slider-item("Неумная емкость", "Не Магомед Штанчаев", "img/photos/residents/1.jpg")
+                +main-residents__slider-item("Неуемная кость", "Магомед Магомедов", "img/photos/residents/1.jpg")
+                +main-residents__slider-item("Емкая умность", "Магомед Штанчаев", "img/photos/residents/1.jpg")
