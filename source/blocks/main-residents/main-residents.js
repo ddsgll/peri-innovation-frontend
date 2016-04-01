@@ -39,3 +39,13 @@ function destroyMainResSlider() {
 
 	mainResSlider.flickity('destroy');
 }
+
+
+var resSliderPhoto = $(".main-residents__slider-photo img")
+
+resSliderPhoto.each(function() {
+	var src = $(this).attr("src");
+
+	$(this).parent().css("background", "transparent url('" + src + "') no-repeat center");
+	$(this).remove();
+});

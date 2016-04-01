@@ -4,7 +4,7 @@ function mainSectionsScroll(e) {
 
 	var delta = e.deltaY || e.detail || e.wheelDelta;
 
-	if (delta > 140 && !isLoading) {
+	if (delta > 140 && !isLoading && isBottom()) {
 		isLoading = true;
 
         if (currentSection !== mainSections.length-1) {
@@ -19,7 +19,7 @@ function mainSectionsScroll(e) {
         }
 	}
 
-	else if (delta < -140 && !isLoading) {
+	else if (delta < -140 && !isLoading && window.scrollY === 0) {
 		isLoading = true;
 
 		if (currentSection !== 0) {
@@ -35,7 +35,7 @@ function mainSectionsScroll(e) {
 
 	}
 
-	e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+	// e.preventDefault ? e.preventDefault() : (e.returnValue = false);
 }
 
 
@@ -99,8 +99,12 @@ function switchToSection(id) {
 
 
 // Проверка на скролл
-function isBound() {
-    
+function isBottom() {
+    var wh  = $(window).height();
+    var dh  = $(document).height()
+    var scr = window.scrollY;
 
-    return;
+    console.log(wh,dh,scr);
+
+    return dh === scr + wh;
 }
