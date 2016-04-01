@@ -40,6 +40,11 @@
         position absolute
         top 50%
         margin-top -36px
+        z-index 1000
+
+        +xs()
+            background rgba(#fff,80%)
+            padding 1rem
 
         &.left
             left -36px
@@ -50,14 +55,20 @@
             +sm()
                 left 0
 
+            +xs()
+                left 1rem
+
         &.right
             right -36px
 
             +md()
-                left 0
+                right 0
 
             +sm()
-                left 0
+                right 0
+
+            +xs()
+                right 1rem
 
 
 
