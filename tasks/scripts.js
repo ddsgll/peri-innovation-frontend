@@ -13,9 +13,8 @@ gulp.task('babel', () => {
 		.pipe( babel({presets: ['es2015']}) )
 		.pipe( gulp.dest( 'dev/js' ) )
 		.pipe( notify({
-			title:   "JAVASCRIPT", 
+			title:   "JAVASCRIPT",
 			message: "Scripts transpiled successfully"
 		}));
 
 });
-
