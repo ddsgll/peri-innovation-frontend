@@ -9,8 +9,7 @@ $(document).ready( function() {
 
 		setLinksPreload();
 		initMainResSlider();
-		initMenu();
-		hideAllSections();
+        initSlider();
 
 	}
 
@@ -19,27 +18,8 @@ $(document).ready( function() {
 
 $(window).load( function() {
 
-	if (isMain) {
-
-		var hash = window.location.hash;
-
-		if (hash !== '') {
-			currentSection = mainSections.indexOf(hash);
-            setMenuActive(hash);
-			switchToSection(hash);
-		}
-
-		else {
-			mainShowSection("#index");
-		}
-
 		disablePreload();
-		setSectionsScroll();
-
 		isLoading = false;
-
-
-	}
 
 });
 

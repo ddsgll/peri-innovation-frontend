@@ -29,20 +29,3 @@
 		opacity 0
 	}
 }
-
-@keyframes showSection {
-	0% {
-		opacity 0
-		transform perspective(1000) rotateX(35deg) scale(.5,.5) //translateY(-500px)
-	}
-
-	100% {
-		opacity 1
-		transform perspective(1000) rotateX(0deg) scale(1,1) //translateY(0px)
-	}
-}
-
-.showSection {
-	animation showSection 1s ease
-	transform-origin 50% 50%
-}
