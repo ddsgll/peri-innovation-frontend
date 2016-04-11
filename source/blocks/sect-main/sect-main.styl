@@ -1,4 +1,25 @@
 .sect-main
-	display block
-	width 100%
-	height 100%
+    display block
+    width 100%
+    height 100%
+    box-shadow 0px 10px 30px rgba(0,0,0,.2)
+    overflow hidden
+
+.ops-section
+    position relative
+    transform translateY(0px) scale(1,1.3)
+    transition all 1s cubic-bezier(.8,0,.2,1)
+    transform-origin 50% 0%
+    z-index 1000
+
+.ops-section.active
+    transform translateY(0px) scale(1,1)
+    z-index 5000
+
+.ops-section.active + .ops-section
+    transform translateY(0px) scale(1,1.3)
+
+
+@media screen and (max-width: 600px)
+    .ops-section
+        transform translateY(0px) scale(1,1)

@@ -6,9 +6,9 @@ mixin header__logo(src)
 
 mixin header()
 
-	header
+	.header
 		.container
 			.row
-				.header
+				.header__content
 					+header__logo("img/logo.png")
 					+menu({"Инкубатор":"incubator", "Мероприятия":"events", "Резиденты":"residents", "Контакты":"contact"})

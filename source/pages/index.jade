@@ -1,18 +1,19 @@
-extends ../layouts/main.jade
-
-
 include ../blocks/header/header.jade
 include ../blocks/sect-main/sect-main.jade
 
 
+extends ../layouts/main.jade
+
+
 block title
-	title Пери инновации
+    title Пери инновации
 
 block content
-	+header()
-	
-	+section-index()
-	+section-incubator()
-	+section-events()
-	+section-residents()
-	+section-contact()
+    +header()
+    
+    div.mainOnePage
+        +section-index()
+        +section-incubator()
+        +section-events()
+        +section-residents()
+        +section-contact()
