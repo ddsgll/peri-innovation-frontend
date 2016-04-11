@@ -4,7 +4,7 @@ $(document).ready( function() {
 
     if ( $(".main-slider").length ) {
 
-        if ( $(window).width() > 600 ) {
+        if ( $(window).width() > 1 ) {
 
             onePageScroll(".mainOnePage", {
                 easing: "cubic-bezier(.8,0,.2,1)",
