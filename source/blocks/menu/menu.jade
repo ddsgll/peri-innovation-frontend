@@ -1,6 +1,7 @@
 mixin menu(data)
 
-	nav
-		ul.menu
-			each value, key in data
-				li: a(href="#{value}").menu__link= key
+    nav
+        ul.menu
+            each value, key in data
+                - var link = '#' + value;
+                li: a(data-index=value, href=link).menu__link= key

@@ -2,7 +2,7 @@ include ../menu/menu
 
 mixin header__logo(src)
 	.header__logo
-		a(href="#index" data-name="#index"): img(src=src, alt="Пери Инновации")
+		a(href="/#1"): img(src=src, alt="Пери Инновации")
 
 mixin header()
 
@@ -11,4 +11,4 @@ mixin header()
 			.row
 				.header__content
 					+header__logo("img/logo.png")
-					+menu({"Инкубатор":"incubator", "Мероприятия":"events", "Резиденты":"residents", "Контакты":"contact"})
+					+menu({"Инкубатор":"2", "Мероприятия":"3", "Резиденты":"4", "Контакты":"5"})

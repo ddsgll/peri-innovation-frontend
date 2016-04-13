@@ -7,30 +7,30 @@ include ../main-contact/main-contact
 
 //- Slider section
 mixin section-index()
-	section.sect-main#index
+	section.sect-main(data-index='1')
 		+main-slider()
 
 
 //- Incubator info
 mixin section-incubator()
-	section.sect-main#incubator
+	section.sect-main(data-index='2')
 		+main-inc()
 
 
 //- Events section
 mixin section-events()
-	section.sect-main#events
+	section.sect-main(data-index='3')
 		+main-events()
 
 
 //- Резиденты
 mixin section-residents()
-	section.sect-main#residents
+	section.sect-main(data-index='4')
 		+main-residents()
 
 
 
 //- Контакты
 mixin section-contact()
-	section.sect-main#contact
+	section.sect-main(data-index='5')
 		+main-contact()

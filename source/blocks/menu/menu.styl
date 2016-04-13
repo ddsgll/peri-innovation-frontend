@@ -2,7 +2,8 @@ nav
     display inline-block
     vertical-align middle
 
-.menu
+.menu,
+.onepage-pagination
     display inline-block
     vertical-align middle
     z-index 1000
@@ -50,12 +51,9 @@ nav
             background #fff
             bottom -8px
             left 0
-            animation underlineOut .2s
-            animation-timing-function cubic-bezier(.8,.2,.2,.8)
+            animation underlineOut 1s
+            animation-timing-function cubic-bezier(.8,0,.2,1)
 
-        &:not(&--active):hover::after
-            animation underlineIn .2s
-            width 100%
 
         &--active::after
             content ''
@@ -66,3 +64,5 @@ nav
             background #fff
             bottom -8px
             left 0
+            animation underlineIn 1s
+            animation-timing-function cubic-bezier(.8,0,.2,1)
