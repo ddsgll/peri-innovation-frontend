@@ -1,5 +1,4 @@
-mixin button(text, type)
-
-	a(href="").button(class="#{type}")
+mixin button(text, type, link)
+	a(href=link).button(class="#{type}")
 		span= text
 		span= text

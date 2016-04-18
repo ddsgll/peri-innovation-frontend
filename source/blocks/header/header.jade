@@ -1,14 +1,23 @@
 include ../menu/menu
 
-mixin header__logo(src)
+mixin header__logo(src, index)
 	.header__logo
-		a(href="/#1"): img(src=src, alt="Пери Инновации")
+		if index === 1
+			a.ops_link(data-index='#1', href="#1"): img(src=src, alt="Пери Инновации")
 
-mixin header()
+		else
+			a(href="/index.html"): img(src=src, alt="Пери Инновации")
 
+
+mixin header(id)
 	.header
 		.container
 			.row
 				.header__content
-					+header__logo("img/logo.png")
-					+menu({"Инкубатор":"2", "Мероприятия":"3", "Резиденты":"4", "Контакты":"5"})
+					+header__logo("img/logo.png", id)
+
+					if id === 1
+						+menu({"Инкубатор":"2", "Мероприятия":"3", "Резиденты":"4", "Контакты":"5"}, id)
+
+					else
+						+menu({"Инкубатор":"incubator", "Мероприятия":"events", "Резиденты":"residents", "Контакты":"contacts"}, id)

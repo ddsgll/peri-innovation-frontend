@@ -17,4 +17,14 @@ $(window).load(disablePreload);
 
 function setLinksPreload() {
 
+	$('a:not(.ops_link)').on('click', function(e) {
+
+		e.preventDefault();
+
+		var link = $(this).attr("href");
+
+		enablePreload();
+
+		setTimeout( function() { window.location.href = link }, 1000);
+    });
 }

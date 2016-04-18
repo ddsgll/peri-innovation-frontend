@@ -1,0 +1,35 @@
+.tabber
+	display block
+	
+.tabber__nav
+	text-align center
+	margin 0
+	padding 2rem 0
+	text-transform uppercase
+		
+.tabber__tab
+	font-size 1rem
+	color #cfcece
+	transition all .4s ease
+	display inline-block
+	vertical-align top
+	margin 0 1rem
+	cursor pointer
+	text-align center
+	
+	&:hover
+		color #777
+
+	&.active
+		color black
+		
+
+.tabber__panel
+	display none
+	position absolute
+	top 0
+	left 0
+	width 100%
+	
+	&.active
+		display block

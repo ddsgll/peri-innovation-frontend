@@ -1,0 +1,34 @@
+include ../blocks/header/header
+include ../blocks/sect-main/sect-main
+include ../blocks/tabber/tabber
+
+extends ../layouts/main
+
+
+block title
+	title Инкубатор | Пери Инновации
+
+block content
+
+	+header('incubator')
+	+sect-header('img/heading/main-residents.jpg')
+
+	.container
+		.row
+			.col-md-12
+				+tabber-tabs(['Партнеры', 'Команда', 'Менторы', 'FAQ'])
+	
+				.tabber__content
+					+tabber-panel()
+						p Content 1
+
+					+tabber-panel()
+						p Content 2
+
+					+tabber-panel()
+						p Content 3
+
+					+tabber-panel()
+						p Content 4
+
+

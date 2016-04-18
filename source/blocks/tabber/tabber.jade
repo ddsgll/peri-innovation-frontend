@@ -1,0 +1,13 @@
+mixin tabber-tabs(data)
+	.tabber
+		.tabber__nav
+			each item in data
+				.tabber__tab= item
+
+
+mixin tabber-panel()
+	.tabber__panel
+		if block
+			block
+		else
+			p No content provided

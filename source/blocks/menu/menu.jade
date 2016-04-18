@@ -1,7 +1,12 @@
-mixin menu(data)
+mixin menu(data, pageId)
 
     nav
         ul.menu
             each value, key in data
-                - var link = '#' + value;
-                li: a(data-index=value, href=link).menu__link= key
+                - var link = pageId == 1 ? '#' + value : value + '.html';
+
+                if pageId === value
+                  li: a.menu__link.menu__link--active(data-index=value, href=link)= key
+
+                else
+                  li: a.ops_link.menu__link(data-index=value, href=link)= key

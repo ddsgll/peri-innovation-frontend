@@ -13,7 +13,7 @@ var cssnano = require('gulp-cssnano');
 
 gulp.task('makelibs', () => {
 
-	gulp.src(['static/libs-js/jquery*.js', 'static/libs-js/TweenMax.min.js', 'static/libs-js/SplitText.min.js', 'static/libs-js/*.js'])
+	gulp.src(['static/libs/jquery*.js', 'static/libs/TweenMax.min.js', 'static/libs/SplitText.min.js', 'static/libs/*.js'])
 		.pipe( plumber() )
 		.pipe( concat('libs.js') )
 		.pipe( uglify() )
@@ -23,7 +23,7 @@ gulp.task('makelibs', () => {
 			message: "JS libs concatenated successfully"
 		}));
 
-	gulp.src('static/libs-css/*.css')
+	gulp.src('static/libs/*.css')
 		.pipe( plumber() )
 		.pipe( concss('libs.css') )
 		.pipe( cssnano() )
