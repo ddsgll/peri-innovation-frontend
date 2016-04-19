@@ -17,6 +17,3 @@ function initTabber() {
 		$(".tabber__panel:eq(" + index + ")").addClass("active");
 	}
 }
-
-
-initTabber();

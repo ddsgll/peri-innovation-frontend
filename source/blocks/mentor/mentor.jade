@@ -1,0 +1,8 @@
+mixin mentor(img, name, desc)
+	.mentor
+		.mentor__photo
+			img(src=img, alt=name)
+
+		.mentor__name!= name
+
+		.mentor__description!= desc

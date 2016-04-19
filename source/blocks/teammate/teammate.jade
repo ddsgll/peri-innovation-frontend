@@ -1,0 +1,14 @@
+mixin teammate(photo, name, rank)
+	.teammate
+		.teammate__photo
+			img(src=photo, alt=name)
+
+		.teammate__info
+			span= name
+			span= rank
+
+
+mixin teammate__desc()
+	.teammate__desc
+		if block
+			block

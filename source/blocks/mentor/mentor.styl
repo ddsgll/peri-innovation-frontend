@@ -1,0 +1,123 @@
+.mentor
+	display inline-block
+	text-align center
+	vertical-align top
+	width 220px
+	margin 0 4px
+	
+	+xs()
+		width 90%
+		margin 0 auto 2rem auto
+	
+.mentor__photo
+	line-height 1
+	font-size 0px
+	text-align center
+	
+	img 
+		display inline-block
+		max-width 100%
+		
+
+.mentor__name
+	font 1rem/6rem 'Roboto'
+	font-weight bold
+	
+	+xs()
+		font 1rem/3rem 'Roboto'
+		font-weight bold
+
+
+.mentor__description
+	margin 0 auto
+	text-align center
+	padding-bottom 2rem
+	
+
+.mentor__container
+	height 450px
+	width 70%
+	margin 0 auto
+	text-align left
+	
+	+below(769px)
+		text-align center
+		height auto
+	
+	&::after
+	&::before
+		content ''
+		position absolute
+		display inline-block
+		top 0
+		left 0
+		width 4rem
+		height 100%
+		background linear-gradient(to right, #fff, transparent)
+		// background #fff
+		z-index 500
+		
+		+below(769px)
+			display none
+		
+
+	&::after
+		left auto
+		right 0
+		background linear-gradient(to left, #fff, transparent)
+		// background #fff
+	
+
+.mentor__slide-arrow
+	display block
+	position absolute
+	top 50%
+	margin-top -36px
+	z-index 1000
+	
+	+below(769px)
+		display none
+	
+	&.left
+		left (-36px * 10)
+		
+		+below(1450px)
+			left (-36px * 5)
+			
+		+below(1024px)
+			left (-36px * 2)
+		
+	&.right
+		right (-36px * 10)
+		
+		+below(1450px)
+			right (-36px * 5)
+			
+		+below(1024px)
+			right (-36px * 2)
+		
+.mentor__container .flickity-page-dots
+	bottom 0px
+
+	+xs()
+		bottom -32px
+
+	li.dot
+		width 10px
+		height 10px
+		background #636363
+		opacity 1
+		transition all 1s ease
+		transform perspective(1000) rotateX(0deg)
+		border 1px solid transparent
+		margin 0 4px
+
+		+xs()
+			width 16px
+			height 16px
+
+		&.is-selected
+			background #fff
+			transition all .4s ease
+			transform perspective(1000) rotateX(180deg)
+			border 1px solid #222

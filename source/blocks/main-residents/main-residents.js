@@ -1,3 +1,7 @@
+//======================================================================
+//
+// Инициализация слайдера с резидентами на главной странице
+
 function initMainResSlider() {
 
 	var
@@ -35,11 +39,13 @@ function initMainResSlider() {
 }
 
 
-var resSliderPhoto = $(".main-residents__slider-photo img")
 
-resSliderPhoto.each( () => {
+$(".main-residents__slider-photo img").each( function() {
 	var src = $(this).attr("src");
 
 	$(this).parent().css("background", `transparent url('${src}') no-repeat center`);
 	$(this).remove();
 });
+
+//
+//======================================================================

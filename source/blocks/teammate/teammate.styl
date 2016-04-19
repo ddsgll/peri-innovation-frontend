@@ -1,0 +1,95 @@
+.teammate
+	display inline-block
+	vertical-align top
+	width 16%
+	margin 0 8px
+	text-align center
+	padding-bottom 6rem
+	border-bottom 6px solid transparent
+	transition all .3s ease
+	cursor pointer
+	
+	+xs()
+		width 40%
+		margin 0 10px
+		padding .5rem
+		padding-bottom 1rem
+		display inline-block
+	+sm()
+		width 30%
+		padding-bottom 3rem
+		margin-bottom 1rem
+	+above(1100px)
+		width 18%
+
+
+	&.active
+		border-bottom-color #000
+		
+		+xs()
+			border 1px solid #000
+			border-bottom 4px solid #000
+	
+.teammate__photo
+	margin-bottom 2rem
+	line-height 1
+	font-size 0
+	width 100%
+	
+	img
+		display block
+		max-width 100%
+		
+		+sm()
+			width 100%
+			
+		+xs()
+			width 100%
+
+.teammate__info
+	span
+		font 1rem/1.5 'Roboto'
+		display block
+		padding 0
+		
+		+sm()
+			padding 0 1rem
+		+xs()
+			font .8rem/1rem 'Roboto'
+		
+	& :first-child
+		font-weight 500
+		
+.teammate__desc
+	margin 0
+	padding 0 1rem
+	overflow hidden
+	height 0
+	text-align left
+	
+	&.active
+		margin 1rem 0
+		height auto
+
+	p
+		margin 0
+		font 18px / 27px 'Roboto'
+		
+		+xs()
+			font 1rem/1.5 'Roboto'
+		
+	ul
+		list-style none
+		
+		li
+			font 18px / 24px 'Roboto'
+			
+			&::before
+				content '— '
+				display inline-block
+				vertical-align middle
+				margin-right 4px
+			
+
+.team__container
+	text-align center
