@@ -1,0 +1,7 @@
+mixin faq(question)
+	.faq&attributes(attributes)
+		.faq__question
+			span= question
+		.faq__answer
+			if block
+				block
