@@ -5,9 +5,17 @@ $(".teammate__desc:eq(0)")
 	.addClass("active");
 
 
+$(".team__container").flickity({
+	cellSelector: '.teammate',
+	wrapAround: true
+});
+
+
 $(".teammate")
 	.on('click', function() {
 
+		var tmi = $(this).index();
+		$(".team__container").flickity('select', tmi);
 
 		$(".teammate")
 			.removeClass("active");
@@ -23,11 +31,4 @@ $(".teammate")
 		$(".teammate__desc:eq(" + index + ")")
 			.addClass("active");
 
-		var scrollSpeed = window.innerWidth > 768 ? 0 : 400;
-
-
-		$("body,html")
-			.animate({
-				scrollTop: $(".teammate__desc").offset().top
-				}, scrollSpeed);
 	});

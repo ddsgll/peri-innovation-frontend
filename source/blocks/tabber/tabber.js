@@ -16,4 +16,6 @@ function initTabber() {
 		$(".tabber__tab:eq("   + index + ")").addClass("active");
 		$(".tabber__panel:eq(" + index + ")").addClass("active");
 	}
+
+	
 }

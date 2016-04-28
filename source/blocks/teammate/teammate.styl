@@ -4,9 +4,9 @@
 	width 16%
 	margin 0 8px
 	text-align center
-	padding-bottom 6rem
+	padding-bottom 4rem
 	border-bottom 6px solid transparent
-	transition all .3s ease
+	transition border .3s ease
 	cursor pointer
 	
 	+xs()
@@ -47,6 +47,8 @@
 			width 100%
 
 .teammate__info
+	height 120px
+	
 	span
 		font 1rem/1.5 'Roboto'
 		display block
@@ -93,3 +95,50 @@
 
 .team__container
 	text-align center
+	margin-bottom 2rem
+	
+	&::before
+	&::after
+		content ''
+		position absolute
+		display block
+		z-index 1000
+		width 10rem
+		height 100%
+		top 0
+		
+	&:before
+		left 0
+		background #fff
+		background linear-gradient(to right, #fff 50%, transparent)
+		
+	&::after
+		right 0
+		background #fff
+		background linear-gradient(to left, #fff 50%, transparent)
+	
+.team__container .flickity-page-dots
+	bottom -2rem
+
+	+xs()
+		bottom -32px
+
+	li.dot
+		width 10px
+		height 10px
+		background #636363
+		opacity 1
+		transition all 1s ease
+		transform perspective(1000) rotateX(0deg)
+		border 1px solid transparent
+		margin 0 4px
+
+		+xs()
+			width 16px
+			height 16px
+
+		&.is-selected
+			background #fff
+			transition all .4s ease
+			transform perspective(1000) rotateX(180deg)
+			border 1px solid #222
