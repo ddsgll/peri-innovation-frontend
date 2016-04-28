@@ -9,6 +9,10 @@ $(document).ready( function() {
         initSlider();
     }
 
+    if ( $(".team__container").length ) {
+        teamSliderInit();
+    }
+
     initTabber();
 
 });
