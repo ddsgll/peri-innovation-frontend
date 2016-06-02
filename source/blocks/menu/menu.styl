@@ -2,14 +2,18 @@ nav
     display inline-block
     vertical-align middle
 
-.menu,
 .onepage-pagination
+    display inline-block
+    vertical-align middle
+    z-index 1000
+    
+.menu
     display inline-block
     vertical-align middle
     z-index 1000
 
     +xs()
-        display block
+        display none
         text-align left
         width 100%
         padding-left 2rem
@@ -25,7 +29,7 @@ nav
         +below(330px)
             margin-bottom .2rem
 
-        &:last-child
+        &:last-of-type
             margin-right 0
 
     &__link
@@ -66,3 +70,31 @@ nav
             left 0
             animation underlineIn 1s
             animation-timing-function cubic-bezier(.8,0,.2,1)
+
+
+.mobile-menu
+    position fixed
+    width 70%
+    height 100vh
+    padding 1.5rem
+    z-index 9000
+    top 0
+    right -70%
+    background #212020
+    box-shadow -230px 0px 0px transparent, -18px 0 50px transparent
+    display none
+    transition all .6s cubic-bezier(.8,0,.2,1)
+    
+    +xs()
+        display block
+        
+    &.active
+        right 0
+        box-shadow -230px 0px 0px rgba(0,0,0,.5), -18px 0 50px rgba(0,0,0,.5)
+    
+    &__link
+        font-size 25px
+        color #fff
+        line-height 2.4
+        font-weight 100
+        

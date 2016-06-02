@@ -1,0 +1,35 @@
+.lang
+	display block
+	text-align right
+	padding-top .5rem
+	
+	+xs()
+		margin 1rem 0 2rem
+	
+.lang a
+	display inline-block
+	vertical-align baseline
+	color #757575
+	font-size 1rem
+	transition color .3s ease
+	
+	+xs()
+		font-size 2rem
+		font-weight 100
+	
+	&:hover
+		color #b5b5b5
+
+.lang :first-child::after
+	content ' | '
+	display inline-block
+	vertical-align baseline
+	font-size 1rem
+	color #fff
+	margin 0 .5rem
+	
+	+xs()
+		font-size 2rem
+
+.lang .lang__sel
+	color #fff

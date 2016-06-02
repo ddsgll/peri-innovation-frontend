@@ -41,19 +41,7 @@ gulp.task('static:transfer', () => {
 
 	gulp.src('static/fonts/**/*').pipe( gulp.dest('dev/fonts/') );
 	gulp.src('static/fonts/*').pipe( gulp.dest('dev/fonts/') );
-	gulp.src('static/img/**/*')
-		.pipe( image({
-			pngquant: true,
-			optipng: true,
-			zopflipng: true,
-			advpng: true,
-			jpegRecompress: true,
-			jpegoptim: true,
-			mozjpeg: true,
-			gifsicle: true,
-			svgo: true
-	    }))
-		.pipe( gulp.dest('dev/img/') );
+	gulp.src('static/img/**/*').pipe( gulp.dest('dev/img/') );
 
 });
 

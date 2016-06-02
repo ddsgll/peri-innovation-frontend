@@ -1,12 +1,28 @@
+include ../lang/lang
+
 mixin menu(data, pageId)
 
-    nav
-        ul.menu
-            each value, key in data
-                - var link = pageId == 1 ? '#' + value : value + '.html';
+  nav
+    ul.menu
+      each value, key in data
+        - var link = pageId == 1 ? '#' + value : value + '.html';
 
-                if pageId === value
-                  li: a.menu__link.menu__link--active(data-index=value, href=link)= key
+        if pageId === value
+          li: a.menu__link.menu__link--active(data-index=value, href=link)= key
 
-                else
-                  li: a.ops_link.menu__link(data-index=value, href=link)= key
+        else
+          li: a.ops_link.menu__link(data-index=value, href=link)= key
+
+      +lang()
+
+    ul.mobile-menu
+      +lang()
+      
+      each value, key in data
+        - var link = pageId == 1 ? '#' + value : value + '.html';
+
+        if pageId === value
+          li: a.mobile-menu__link.mobile-menu__link--active(data-index=value, href=link)= key
+
+        else
+          li: a.ops_link.mobile-menu__link(data-index=value, href=link)= key

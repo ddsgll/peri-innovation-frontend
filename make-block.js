@@ -1,6 +1,5 @@
 // Copyright: CSSSR
 // https://github.com/CSSSR/csssr-project-template
-// 
 
 
 'use strict';

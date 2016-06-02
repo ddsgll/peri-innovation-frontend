@@ -1,15 +1,13 @@
 // .faq scripts goes here
 function initFAQ() {
-
-	let faq = $(".faq");
+	let faq = $(".faq")
 
 	faq.on('click', function() {
-		faq.removeClass("active");
-		
-		$(this)
-			.toggleClass("active");
-	});
+		faq.removeClass('active');
 
+		$(this)
+			.addClass('active');
+	})
 }
 
 initFAQ();

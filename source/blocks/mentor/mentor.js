@@ -1,31 +1,28 @@
 // .mentor scripts goes here
-
 function initMentorSlider() {
 
-	let isMoreThanThree = $(".mentor").length > 3;
+	let
+		isMoreThanThree = $(".mentor").length > 3,
+		isDesctop       = window.innerWidth >= 768;
 
-	if (window.innerWidth > 768) {
+	let
+		slider = $("#mentorSlider"),
+		next   = $(".mentor__slide-arrow.right"),
+		prev   = $(".mentor__slide-arrow.left");
+
+	if ( isDesctop ) {
 		
-		let mentorSlider = $("#mentorSlider").flickity({
-			wrapAround:      isMoreThanThree,
+		slider.flickity({
+			wrapAround     : isMoreThanThree,
 			prevNextButtons: false,
-			setGallerySize: false,
-			contain: true,
-			cellSelector: '.mentor'
+			setGallerySize : false,
+			contain        : true,
+			cellSelector   : '.mentor'
 		});
 
-		$(".mentor__slide-arrow.left").on('click', function() {
-			$("#mentorSlider").flickity('previous');
-		});
+		prev.on('click', e => slider.flickity('previous')	);
+		next.on('click', e => slider.flickity('next') );
 
-
-		$(".mentor__slide-arrow.right").on('click', function() {
-			$("#mentorSlider").flickity('next');
-		});
 	}
 
 }
-
-$(document).ready(function() {
-	initMentorSlider();
-});

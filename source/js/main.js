@@ -1,17 +1,19 @@
 $(document).ready( function() {
 
+    let pageIsMain = $(".main-slider").length;
+    let isThereTeamBlock = (".team__container").length;
+    let isThereMentorBlock = $("#mentorSlider").length;
+
     setLinksPreload();
 
-    if ( $(".main-slider").length ) {
-
+    if ( pageIsMain ) {
         initOPS();
         initMainResSlider();
         initSlider();
     }
 
-    if ( $(".team__container").length ) {
-        teamSliderInit();
-    }
+    isThereTeamBlock   ? initTeamSlider()   : '';
+    isThereMentorBlock ? initMentorSlider() : '';
 
     initTabber();
 
@@ -27,7 +29,7 @@ function setLinksPreload() {
 
 		e.preventDefault();
 
-		var link = $(this).attr("href");
+		let link = $(this).attr("href");
 
 		enablePreload();
 

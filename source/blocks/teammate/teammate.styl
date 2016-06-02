@@ -30,11 +30,13 @@
 			border 1px solid #000
 			border-bottom 4px solid #000
 	
+
 .teammate__photo
 	margin-bottom 2rem
 	line-height 1
 	font-size 0
 	width 100%
+	min-height 110px
 	
 	img
 		display block
@@ -45,6 +47,36 @@
 			
 		+xs()
 			width 100%
+			
+
+.team__slide-arrow
+	display block
+	position absolute
+	top 30%
+	margin-top -36px
+	z-index 1000
+	
+	+below(769px)
+		display none
+	
+	&.left
+		left (-36px * 1)
+		
+		+below(1450px)
+			left (-36px * 5)
+			
+		+below(1024px)
+			left (-36px * 2)
+		
+	&.right
+		right (-36px * 1)
+		
+		+below(1450px)
+			right (-36px * 5)
+			
+		+below(1024px)
+			right (-36px * 2)
+
 
 .teammate__info
 	height 120px
@@ -62,6 +94,7 @@
 	& :first-child
 		font-weight 500
 		
+
 .teammate__desc
 	margin 0
 	padding 0 1rem
@@ -76,12 +109,14 @@
 	p
 		margin 0
 		font 18px / 27px 'Roboto'
+		padding 0 4rem
 		
 		+xs()
 			font 1rem/1.5 'Roboto'
 		
 	ul
 		list-style none
+		padding 0 4rem
 		
 		li
 			font 18px / 24px 'Roboto'
@@ -116,6 +151,7 @@
 		right 0
 		background #fff
 		background linear-gradient(to left, #fff 50%, transparent)
+	
 	
 .team__container .flickity-page-dots
 	bottom -2rem

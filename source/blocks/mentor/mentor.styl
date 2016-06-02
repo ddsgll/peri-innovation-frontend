@@ -53,10 +53,9 @@
 		width 4rem
 		height 100%
 		background linear-gradient(to right, #fff, transparent)
-		// background #fff
 		z-index 500
 		
-		+below(769px)
+		+below(767px)
 			display none
 		
 
@@ -64,36 +63,36 @@
 		left auto
 		right 0
 		background linear-gradient(to left, #fff, transparent)
-		// background #fff
+
 	
 
 .mentor__slide-arrow
 	display block
 	position absolute
 	top 50%
-	margin-top -36px
+	margin-top -160px
 	z-index 1000
 	
-	+below(769px)
+	+below(767px)
 		display none
 	
 	&.left
-		left (-36px * 10)
+		left (1rem * -10)
 		
 		+below(1450px)
-			left (-36px * 5)
+			left (1rem * -5)
 			
 		+below(1024px)
-			left (-36px * 2)
+			left (1rem * -2)
 		
 	&.right
-		right (-36px * 10)
+		right (1rem * -10)
 		
 		+below(1450px)
-			right (-36px * 5)
+			right (1rem * -5)
 			
 		+below(1024px)
-			right (-36px * 2)
+			right (1rem * -2)
 		
 .mentor__container .flickity-page-dots
 	bottom 0px
