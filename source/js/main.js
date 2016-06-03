@@ -3,12 +3,12 @@ $(document).ready( function() {
     let isMainPage         = $(".main-slider").length;
     let isThereTeamBlock   = (".team__container").length;
     let isThereMentorBlock = $("#mentorSlider").length;
-    let isNotMobile        = $(window).width() > 767;
+    let isMobile        = $(window).width() < 767;
 
     setLinksPreload();
 
     if ( isMainPage ) {
-        isNotMobile ? initOPS() : '';
+        isMobile ? '' : initOPS();
         initMainResSlider();
         initSlider();
     }

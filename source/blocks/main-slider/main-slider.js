@@ -7,15 +7,18 @@ function initSlider() {
 	sliderImages.each(function() {
 		var src = $(this).attr("src");
 
-		$(this).parent().css("background", `transparent url('${src}') no-repeat center`);
+		$(this)
+			.parent()
+				.css("background", `transparent url('${src}') no-repeat center`);
+
 		$(this).remove();
 	});
 
 	mainSlider.flickity({
-		wrapAround:      true,
+		wrapAround     : true,
 		prevNextButtons: false,
-
-		cellSelector:    '.main-slider__item'
+		cellSelector   : '.main-slider__item',
+		draggable: $(window).width() > 768
 	});
 
 

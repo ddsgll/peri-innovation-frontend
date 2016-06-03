@@ -30,7 +30,8 @@ function initOPS() {
         beforeMove: function(index) {setMenuActive(index);},
         afterMove: function(index) {},
         loop: false,
-        keyboard: true
+        keyboard: true,
+        sectionContainer: "section"
     });
 
 }
