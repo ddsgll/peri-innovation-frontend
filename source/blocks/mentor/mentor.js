@@ -25,4 +25,19 @@ function initMentorSlider() {
 
 	}
 
+	else {
+
+		slider.flickity({
+			wrapAround     : true,
+			prevNextButtons: false,
+			setGallerySize : false,
+			contain        : true,
+			cellSelector   : '.mentor'
+		});
+
+		prev.on('click', e => slider.flickity('previous')	);
+		next.on('click', e => slider.flickity('next') );
+
+	}
+
 }
