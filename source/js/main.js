@@ -1,13 +1,14 @@
 $(document).ready( function() {
 
-    let pageIsMain = $(".main-slider").length;
-    let isThereTeamBlock = (".team__container").length;
+    let isMainPage         = $(".main-slider").length;
+    let isThereTeamBlock   = (".team__container").length;
     let isThereMentorBlock = $("#mentorSlider").length;
+    let isNotMobile        = $(window).width() > 767;
 
     setLinksPreload();
 
-    if ( pageIsMain ) {
-        initOPS();
+    if ( isMainPage ) {
+        isNotMobile ? initOPS() : '';
         initMainResSlider();
         initSlider();
     }

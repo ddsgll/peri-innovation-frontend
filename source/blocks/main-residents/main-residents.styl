@@ -7,28 +7,7 @@
 
     &__slider-item
         width 100%
-        transition opacity .1s ease, transform .1s ease
-        transform perspective(1000px) rotateY(-45deg) scale(.7,.7)
-        opacity 0
-
-        +xs()
-            transform none
-            transition none
-        +md()
-            transition opacity .1s ease, transform .1s ease
-            transform perspective(1000px) rotateY(-45deg) scale(.7,.7)
-
-        &.is-selected
-            transform perspective(1000px) rotateY(0deg) scale(1,1)
-            opacity 1
-            transition opacity .6s ease, transform 1s ease
-
-            +xs()
-                transform none
-                transition none
-            +md()
-                transition opacity .1s ease, transform .1s ease
-                transform perspective(1000px) rotateY(-45deg) scale(.7,.7)
+        opacity 1
 
         .button
             margin 56px 0

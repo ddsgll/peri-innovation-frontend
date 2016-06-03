@@ -81,7 +81,7 @@ nav
     top 0
     right -70%
     background #212020
-    box-shadow -230px 0px 0px transparent, -18px 0 50px transparent
+    box-shadow -220px 0px 0px transparent, -18px 0 50px transparent
     display none
     transition all .6s cubic-bezier(.8,0,.2,1)
     
@@ -90,11 +90,26 @@ nav
         
     &.active
         right 0
-        box-shadow -230px 0px 0px rgba(0,0,0,.5), -18px 0 50px rgba(0,0,0,.5)
+        box-shadow -220px 0px 0px rgba(0,0,0,.5), -18px 0 50px rgba(0,0,0,.5)
     
     &__link
         font-size 25px
         color #fff
         line-height 2.4
         font-weight 100
+        
+    &__burger
+        position absolute
+        width 54px
+        height 54px
+        background url('../img/icons/burger.png') no-repeat center
+        top 14px
+        left -64px
+        cursor pointer
+        transition all .6s cubic-bezier(.8,0,.2,1)
+        z-index 5
+        
+        &.active
+            left 25px
+            background url('../img/icons/close-mobile-menu.png') no-repeat center
         

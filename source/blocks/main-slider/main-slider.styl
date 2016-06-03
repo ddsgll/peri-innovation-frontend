@@ -5,6 +5,9 @@
     top 0
     left 0
     overflow hidden
+    
+    +xs()
+        height 100vh
 
     &__item
         width 100%
@@ -128,8 +131,9 @@
         +xs()
             width 24px
             height 24px
+            transform perspective(1000) rotateX(0deg) scale(1,1)
 
         &.is-selected
             background #fff
             transition all .4s ease
-            transform perspective(1000) rotateX(180deg) scale(1,1)
+            transform perspective(1000) rotateX(180deg)
