@@ -83,7 +83,7 @@ nav
     background #212020
     box-shadow -220px 0px 0px transparent, -18px 0 50px transparent
     display none
-    transition all .6s cubic-bezier(.8,0,.2,1)
+    transition all .6s cubic-bezier(.8,0,.2,1), box-shadow .2s ease
     
     +xs()
         display block
@@ -91,6 +91,7 @@ nav
     &.active
         right 0
         box-shadow -220px 0px 0px rgba(0,0,0,.5), -18px 0 50px rgba(0,0,0,.5)
+        transition all .6s cubic-bezier(.8,0,.2,1), box-shadow .6s .3s ease
     
     &__link
         font-size 25px

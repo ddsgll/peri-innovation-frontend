@@ -1,13 +1,52 @@
 .main-contact
-    background #fff
-    height 100%
-	.info
-		margin 4rem 0 1rem 0
+  background #fff
+  height 100%
+  
+  +xs()
+    display none
+    
+  +sm()
+    display block
+  
+.info
+  margin 4rem 0 1rem 0
 
-		> span
-			display block
-			text-align center
-			font-weight regular
-			color #222
-			font-size 1rem
-			line-height 1.5
+  > span
+    display block
+    text-align center
+    font-weight regular
+    color #222
+    font-size 1rem
+    line-height 1.5
+
+
+.main-contact--mobile
+  display block
+  height 100vh
+  background url('../img/main-mobile-contact-bg.png') no-repeat center
+  background-size cover
+  text-align center
+  padding 3rem 0
+  display flex
+  flex-direction column
+  align-items center
+  justify-content space-between
+  
+  +xs()
+    display block
+    
+  .info
+    position absolute
+    bottom 2rem
+    width 100%
+    text-align center
+    
+    span
+      color #fff
+      font-size 1rem
+      font-weight 100
+    
+.main-contact__title
+  font 3rem 'Roboto'
+  color #fff
+  font-weight 100
