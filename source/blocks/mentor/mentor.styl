@@ -7,7 +7,7 @@
 	
 	+xs()
 		width 90%
-		margin 0 auto 2rem auto
+		margin 0 1rem
 	
 .mentor__photo
 	line-height 1
@@ -41,7 +41,7 @@
 	
 	+below(769px)
 		text-align center
-		height auto
+		height 320px
 	
 	&::after
 	&::before
@@ -72,10 +72,7 @@
 	top 50%
 	margin-top -160px
 	z-index 1000
-	
-	+below(767px)
-		display none
-	
+		
 	&.left
 		left (1rem * -10)
 		
@@ -84,6 +81,10 @@
 			
 		+below(1024px)
 			left (1rem * -2)
+			
+		+below(768px)
+			left 0
+			margin-top -80px
 		
 	&.right
 		right (1rem * -10)
@@ -93,6 +94,10 @@
 			
 		+below(1024px)
 			right (1rem * -2)
+			
+		+below(768px)
+			right 0
+			margin-top -80px
 		
 .mentor__container .flickity-page-dots
 	bottom 0px

@@ -17,14 +17,18 @@ $(".menu__link").on('click', function() {
 });
 
 $(".mobile-menu__link").on('click', function() {
-    var index = $(this).parent().index();
+    var index = $(this).data("index");
 
     $(".mobile-menu")
       .removeClass("active")
       .find('.mobile-menu__burger')
         .removeClass('active');
 
-    OPSGoTo(index);
+     var offsetTop = $(`section[data-index=${index}]`).offset().top;
+
+     console.log(offsetTop);
+
+    $("html, body").animate({scrollTop: offsetTop}, 400);
 });
 
 var burger = $(".mobile-menu__burger");

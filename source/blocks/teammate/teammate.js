@@ -17,8 +17,9 @@ function initTeamSlider() {
 		flickRes = teamContainer.flickity({
 			cellSelector: '.teammate',
 			wrapAround  : true,
-			draggable   :false,
-			pageDots    : false
+			draggable   : false,
+			pageDots    : false,
+			prevNextButtons: false
 		});
 
 

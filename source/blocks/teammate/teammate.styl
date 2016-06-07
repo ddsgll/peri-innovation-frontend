@@ -10,11 +10,12 @@
 	cursor pointer
 	
 	+xs()
-		width 40%
+		width 80%
 		margin 0 10px
 		padding .5rem
 		padding-bottom 1rem
 		display inline-block
+		border none
 	+sm()
 		width 30%
 		padding-bottom 3rem
@@ -27,7 +28,6 @@
 		border-bottom-color #000
 		
 		+xs()
-			border 1px solid #000
 			border-bottom 4px solid #000
 	
 
@@ -56,9 +56,6 @@
 	margin-top -36px
 	z-index 1000
 	
-	+below(769px)
-		display none
-	
 	&.left
 		left (-36px * 1)
 		
@@ -67,6 +64,9 @@
 			
 		+below(1024px)
 			left (-36px * 2)
+			
+		+xs()
+			left 0
 		
 	&.right
 		right (-36px * 1)
@@ -76,10 +76,16 @@
 			
 		+below(1024px)
 			right (-36px * 2)
+			
+		+xs()
+			right 0
 
 
 .teammate__info
 	height 120px
+	
+	+xs()
+		height auto
 	
 	span
 		font 1rem/1.5 'Roboto'
@@ -113,6 +119,7 @@
 		
 		+xs()
 			font 1rem/1.5 'Roboto'
+			padding 0 8px
 		
 	ul
 		list-style none
@@ -133,6 +140,9 @@
 	margin-bottom 2rem
 	height 340px
 	
+	+xs()
+		height auto
+	
 	&::before
 	&::after
 		content ''
@@ -142,6 +152,9 @@
 		width 10rem
 		height 100%
 		top 0
+		
+		+xs()
+			display none
 		
 	&:before
 		left 0

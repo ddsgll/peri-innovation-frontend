@@ -17,9 +17,9 @@
 	padding 1rem 0
 	text-align center
 	
-	a
-	a:visited
-	a:active
+	> a
+	> a:visited
+	> a:active
 		color #cfcece
 		display inline-block
 		vertical-align middle
@@ -27,11 +27,38 @@
 		transition all .2s ease
 		position relative
 		top 2px
-		
+	
 		&:hover
 			color #666
 			border-bottom 1px solid #888
-	img
+	> img
 		margin-right .5rem
 		display inline-block
 		vertical-align middle
+		
+		+xs()
+			display none
+			
+		+sm()
+			display inline-block
+			
+	> img + a
+		display inline-block
+		
+		+xs()
+			display none
+			
+		+sm()
+			display inline-block
+
+		
+	
+	.mob
+		display none
+		top 14px
+		
+		+xs()
+			display inline-block
+			
+		+sm()
+			display none

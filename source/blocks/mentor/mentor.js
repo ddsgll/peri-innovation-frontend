@@ -15,7 +15,7 @@ function initMentorSlider() {
 		slider.flickity({
 			wrapAround     : isMoreThanThree,
 			prevNextButtons: false,
-			setGallerySize : false,
+			setGallerySize : true,
 			contain        : true,
 			cellSelector   : '.mentor'
 		});
